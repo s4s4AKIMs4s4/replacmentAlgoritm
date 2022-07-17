@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
-module.exports = (env, { mode = 'development' }) => {
+module.exports = (env, {mode = 'development'}) => {
   const config = {
     mode,
     entry: {
@@ -47,7 +48,7 @@ module.exports = (env, { mode = 'development' }) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'index.js',
-      libraryTarget: 'amd',
+      libraryTarget: 'ES6',
       publicPath: '/dist/',
       umdNamedDefine: true,
     },
@@ -77,6 +78,7 @@ module.exports = (env, { mode = 'development' }) => {
       enforce: 'pre',
     });
     config.plugins = [
+      new ESLintPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"development"',
       }),
