@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    max-width: 360px;
+}
+.card{
+    padding: 0 16px 0 16px;
+    max-width: 327px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}

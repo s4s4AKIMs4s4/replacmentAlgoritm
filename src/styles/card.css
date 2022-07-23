@@ -1,0 +1,32 @@
+.modalForm{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+}
+.modalForm___formItem{
+
+}
+
+.modalForm div:nth-of-type(1){
+    flex-grow: 1;
+}
+
+.modalForm div:nth-of-type(2){
+    flex-grow: 3;
+}
+
+.ModalHeader{
+    display: flex;
+    flex-direction: row;
+}
+
+.ModalHeader__closeButton{
+    display: flex;
+    justify-content:end;
+    margin-top: 4px;
+}
+
+.ModalHeader div{
+    flex-grow: 1;
+}
