@@ -8,27 +8,22 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import SettingsIcon from '@mui/icons-material/Settings';
 import useList from '../hooks/UseList';
-  
-export default function CheckboxList() {
-  const [checked, setChecked] = React.useState([0]);
+
+interface ICheckboxList{
+  openChangeWordModal:(word:string, replacmentWord:string, key:string) => void   
+}
+
+const CheckboxList:React.FC<ICheckboxList> = ({openChangeWordModal}) => {
   const {listItems, changeChekedList} = useList()
 
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
-
+  React.useEffect(() =>{
+    return () => {console.log('Unmount')}
+  })
+  
   const handleListClick = (key:string) => () => {
     changeChekedList(key)
   }
+
   return (
     <>
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -41,7 +36,10 @@ export default function CheckboxList() {
                 secondaryAction={
                     <>
                         <IconButton edge="end" aria-label="comments">
-                            <SettingsIcon />
+                            <SettingsIcon onClick = {
+                                () => openChangeWordModal(listItem.word, listItem.replacmentWord,listItem.key)
+                              } 
+                            />
                         </IconButton>
                         <IconButton edge="end" aria-label="comments"></IconButton>
                     </>
@@ -53,20 +51,19 @@ export default function CheckboxList() {
                     } dense>
                 <ListItemIcon>
                     <Checkbox
-                    edge="start"
-                    checked={listItem.checked}
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ 'aria-labelledby': labelId }}
+                      edge="start"
+                      checked={listItem.checked}
+                      tabIndex={-1}
+                      disableRipple
+                      inputProps={{ 'aria-labelledby': labelId }}
                     />
                 </ListItemIcon>
                 
                 <ListItemText
-                    
                     id={labelId} 
                     primary={`${listItem.word} ➜ ${listItem.replacmentWord}`} />
-                
                 </ListItemButton> 
+
             </ListItem>
             );
         })}
@@ -74,3 +71,4 @@ export default function CheckboxList() {
     </>
   );
 }
+export default CheckboxList

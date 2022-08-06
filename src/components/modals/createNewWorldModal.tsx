@@ -4,6 +4,7 @@ import { Modal } from '@mui/material';
 import { IModal } from '../../models';
 
 const CreateNewWorldModal:FC<IModal> = ({handleClose, open, children}) => {
+  console.log('Modal')
   return <>
     <Modal
         open={open}

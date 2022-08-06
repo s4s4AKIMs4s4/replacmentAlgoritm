@@ -27,7 +27,7 @@ export default function useList() {
         )
     }, [listItems])
 
-    const addNew = useCallback((word: string, replacmentWord: string) => {
+    const addNewListItem = (word: string, replacmentWord: string) => {
         const newObj: IListItem = {
             checked: false,
             key: uuidv4(),
@@ -35,13 +35,13 @@ export default function useList() {
             word: word
         }
         const newList = listItems.concat({ ...newObj })
-        setListItems(newList)
-    }, [])
-
-    const removeListItem = (key: string) => {
-        dispatch(setListItems(listItems.filter((listItem) => listItem.key !== key)))
+        dispatch(setListItems(newList))
     }
 
+    const removeListItems = () => {
+        dispatch(setListItems(listItems.filter((listItem) => !listItem.checked)))
+    }
+  
     const changeListItem = (key: string, word: string, replacmentWord: string) => {
         dispatch(setListItems(listItems.map((listItem) => {
             if (listItem.key === key)
@@ -53,5 +53,5 @@ export default function useList() {
             else return { ...listItem }
         })))
     }
-    return { listItems, changeChekedList, addNew, removeListItem, changeListItem }
+    return { listItems, changeChekedList, addNewListItem, removeListItems, changeListItem }
 }

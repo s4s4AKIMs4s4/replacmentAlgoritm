@@ -13,8 +13,16 @@ export interface IListItem{
 
 export interface IWordCard{
     handleClose:() => void,
-    word:string,
-    replacmentWord:string,
-    // children: React.ReactNode;
 }
 
+export interface IChangeWord extends IWordCard{
+    word:string,
+    replacmentWord:string,
+    wordKey:string,
+}
+
+export interface IWordState{
+    word:string,
+    replacmentWord:string
+  }
+  

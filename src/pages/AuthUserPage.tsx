@@ -7,9 +7,26 @@ import CreateNewWorldModal from '../components/modals/createNewWorldModal';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { listSlice } from '../store/reducers/listSlice';
 import useWordsModal from '../hooks/useWordsModal';
+import useList from '../hooks/UseList';
 function Layout(){
 
-    const {ModalCard, closeModal, open, openChangeWordModal, openCreteWordModal,openModal} = useWordsModal()
+    const {
+        ModalCard, 
+        closeModal, 
+        open, 
+        openChangeWordModal, 
+        openCreteWordModal,
+        openModal,
+    } = useWordsModal()
+
+    const {removeListItems} = useList()
+    React.useEffect(() =>{
+        return () => {console.log('Unmount')}
+      })
+
+    const removeListImtemClickHandler = () => {
+        removeListItems()
+    }  
 
     return <>
         <div className = 'content'>
@@ -20,11 +37,13 @@ function Layout(){
             <div className='card'>
                 <div className = "header">
                     <Button variant="outlined" onClick={() => {openCreteWordModal()}}>Create</Button>
-                    <SettingsIcon/>
+                    <SettingsIcon onClick={removeListImtemClickHandler}/>
                 </div>
             </div>
             <div>
-                <CheckboxList/>
+                <CheckboxList 
+                    openChangeWordModal = {openChangeWordModal}
+                />
             </div>
         </div>
     </>

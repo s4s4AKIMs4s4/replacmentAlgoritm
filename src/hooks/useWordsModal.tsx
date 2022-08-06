@@ -1,29 +1,29 @@
 import { useState } from "react";
 import React from "react";
-import WordCard from "../components/BasicCard";
+import CreateWordCard from "../components/Cards/CreateWordCard";
+import ChangeWordCard from "../components/Cards/ChangeWordCard";
 export default function useWordsModal(){
     const [open,setOpen] = useState<boolean>(false)
     const closeModal = () => setOpen(false)
     const openModal = () => setOpen(true)
-    const  [ModalCard,setModalCard] = useState<JSX.Element>(<></>)
+    const  [ModalCard, setModalCard] = useState<JSX.Element>(<></>)
 
     const openCreteWordModal = () => {
         setOpen(true)
         setModalCard( 
-            <WordCard 
+            <CreateWordCard 
                 handleClose={closeModal}
-                replacmentWord = {''}
-                word = {''}
             /> 
         )
     }
 
-    const openChangeWordModal = (word:string, replacmentWord:string) => {
+    const openChangeWordModal = (word:string, replacmentWord:string, key:string) => {
         setOpen(true)
-        setModalCard(<WordCard 
+        setModalCard(<ChangeWordCard 
             handleClose={closeModal}
-            replacmentWord = {word}
-            word = {replacmentWord}
+            replacmentWord = { replacmentWord }
+            word = { word }
+            wordKey = { key }
         />) 
     }
 

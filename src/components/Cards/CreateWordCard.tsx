@@ -6,14 +6,25 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
-import '../styles/card.css'
+import '../../styles/card.css'
 import Input from '@mui/material/Input';
 import CloseIcon from '@mui/icons-material/Close';
-import { IWordCard } from '../models';
+import { IWordCard, IWordState } from '../../models';
+import useList from '../../hooks/UseList';
+import useWordsModal from '../../hooks/useWordsModal';
+import useCardchangeWords from '../../hooks/useCardchangeWords';
 
 const ariaLabel = { 'aria-label': 'description' };
 
-const  WordCard:React.FC<IWordCard> = ( {handleClose,replacmentWord,word}) => {
+const  CreateWordCard:React.FC<IWordCard> = ( {handleClose}) => {
+  const {addNewListItem, listItems, changeChekedList} = useList()
+  const {changeReplacment, changeWord, wordState} = useCardchangeWords()
+
+  const createWord = (e:React.MouseEvent<HTMLButtonElement>) => {
+    addNewListItem(wordState.word, wordState.replacmentWord)
+    handleClose()
+  }
+
   return (
     <Card sx={style}>
       <CardContent>
@@ -37,7 +48,7 @@ const  WordCard:React.FC<IWordCard> = ( {handleClose,replacmentWord,word}) => {
           </div>
 
           <div>
-            <Input defaultValue={word} inputProps={ariaLabel} />
+            <Input onChange={changeWord} defaultValue={''} inputProps={ariaLabel} />
           </div>
           </div>
 
@@ -49,14 +60,14 @@ const  WordCard:React.FC<IWordCard> = ( {handleClose,replacmentWord,word}) => {
             </div>
             
             <div>
-              <Input defaultValue={replacmentWord} inputProps={ariaLabel} />
+              <Input onChange={changeReplacment} defaultValue={''} inputProps={ariaLabel} />
             </div>
         </div>
 
       </CardContent>
 
       <CardActions>
-        <Button onClick={handleClose} size="small">Create</Button>
+        <Button onClick={createWord} size="small">Create</Button>
       </CardActions>
     </Card>
   );
@@ -70,5 +81,5 @@ const style = {
   minWidth: 275
 };
 
-export default WordCard
+export default CreateWordCard
 
