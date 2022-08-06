@@ -17,10 +17,7 @@ const ariaLabel = { 'aria-label': 'description' };
 
 const  ChangeWordCard:React.FC<IChangeWord> = ( props ) => {
   const {addNewListItem, listItems, changeListItem} = useList()
-  const {changeReplacment, changeWord, wordState, setWordState} = useCardchangeWords({
-    replacmentWord:props.replacmentWord,
-    word:props.word,
-  })
+  const {changeReplacment, changeWord, wordState, setWordState} = useCardchangeWords()
 
   const changeWordHandler = (e:React.MouseEvent<HTMLButtonElement>) => {    
     const word =  wordState.word || props.word

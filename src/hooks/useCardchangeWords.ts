@@ -3,7 +3,7 @@ import { IWordState } from "../models"
 
 
 
-function useCardchangeWords(props:IWordState){
+function useCardchangeWords(){
 
 
     const [wordState, setWordState] = React.useState<IWordState>({
