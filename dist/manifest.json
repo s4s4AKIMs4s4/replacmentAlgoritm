@@ -3,6 +3,15 @@
     "name": "Change background color",
     "version": "1.0.0",
     "manifest_version": 3,
+    "background":{
+      "service_worker":"background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["contentscript.js"]
+      }
+    ],
     "permissions": [
       "storage",
       "tabs",

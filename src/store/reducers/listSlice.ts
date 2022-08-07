@@ -33,6 +33,8 @@ export const listSlice = createSlice({
     initialState,
     reducers:{
         setListItems(state:IInitialState, action:PayloadAction<IListItem[]>){
+            //@ts-ignore
+            chrome.runtime.sendMessage({replaceState: action.payload})
             state.list = action.payload            
         }
     }
