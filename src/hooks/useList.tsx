@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { IListItem } from "../models"
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch, useAppSelector } from "./redux";
 import { listSlice } from "../store/reducers/listSlice";
+import { AuthSlice } from "../store/reducers/authSlice";
 
 export default function useList() {
 
@@ -10,13 +11,23 @@ export default function useList() {
     const { setListItems } = listSlice.actions
     const [open, setOpen] = useState<boolean>(false)
     const dispatch = useAppDispatch()
+    const { setAuth } = AuthSlice.actions
+    const isAuth = useAppSelector(state => state.authReducer.isAuth)
 
+    useEffect(() => {
+        if(!isAuth){
+            if(listItems.length !== 0){
+                dispatch(setAuth(true))
+            }
+        }
+    },[listItems])
+    
     const findListElementById = (key: string): undefined | IListItem => {
         return listItems.find((listItem) => {
             return listItem.key === key
         })
     }
-
+    
     const changeChekedList = useCallback((key: string) => {
         dispatch(
             setListItems(listItems.map((listItem) => {

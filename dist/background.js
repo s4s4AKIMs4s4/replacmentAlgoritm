@@ -23,14 +23,14 @@ function sendToContenJs(tabId, changeInfo, tab){
     });
 }
 
-const makeReplace = () => {
-    const body = document.querySelector('body')
-    chrome.storage.sync.get(['replaceState'], function(result) {
-        result.replaceState.map((wordObject) => {
-            reolacmentStrategy(wordObject.word, wordObject.replacmentWord)(body)
-        })
-      })
-}
+// const makeReplace = () => {
+//     const body = document.querySelector('body')
+//     chrome.storage.sync.get(['replaceState'], function(result) {
+//         result.replaceState.map((wordObject) => {
+//             reolacmentStrategy(wordObject.word, wordObject.replacmentWord)(body)
+//         })
+//       })
+// }
 
 chrome.runtime.onInstalled.addListener(()=>{
 
@@ -49,29 +49,20 @@ chrome.tabs.onUpdated.addListener(
     }
   ); 
 
-
-
 async function setLocalItem (replaceState) {
     chrome.storage.sync.get(['replaceState'], function(result) {
         const replaceObj = {
             replaceState:replaceState
         }
         chrome.storage.sync.set(replaceObj, function() {
-            console.log('Object is set ');
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.sendMessage(tabs[0].id, {state: replaceObj});
+              });  
         });
-          chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {state: replaceObj});
-          });  
       })
     
     }
-
-
-
 chrome.runtime.onMessage.addListener( function(request,sender,sendResponse){
-    console.log('onMessage')
-    console.log('onMessage')
-    console.log(request)
     setLocalItem(request.replaceState) 
 })
   

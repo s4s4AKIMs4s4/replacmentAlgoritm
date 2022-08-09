@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import CreateWordCard from "../components/Cards/CreateWordCard";
 import ChangeWordCard from "../components/Cards/ChangeWordCard";
+
 export default function useWordsModal(){
     const [open,setOpen] = useState<boolean>(false)
     const closeModal = () => setOpen(false)

@@ -18862,8 +18862,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/App.css */ "./src/styles/App.css");
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Layout */ "./src/components/Layout.tsx");
-/* harmony import */ var _hooks_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hooks/redux */ "./src/hooks/redux.ts");
-/* harmony import */ var _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store/reducers/listSlice */ "./src/store/reducers/listSlice.ts");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -18880,30 +18878,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-
 function App() {
-  var listItems = (0,_hooks_redux__WEBPACK_IMPORTED_MODULE_3__.useAppSelector)(function (state) {
-    return state.userReducer.list;
-  });
-  var setListItems = _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_4__.listSlice.actions.setListItems;
-  var dispatch = (0,_hooks_redux__WEBPACK_IMPORTED_MODULE_3__.useAppDispatch)(); //for test  
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    //@ts-ignore
-    chrome.storage.sync.get(['replaceState'], function (result) {
-      dispatch(setListItems(result.replaceState));
-    }); // dispatch(setListItems([ {
-    //   key:uuidv4(),
-    //   checked:false,
-    //   word:'phonk',
-    //   replacmentWord:'fonk'
-    // }]))
-    // return () => {
-    //   console.log('unmount')
-    // }
-  }, []);
-
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       open = _React$useState2[0],
@@ -19231,33 +19206,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _pages_AuthUserPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/AuthUserPage */ "./src/pages/AuthUserPage.tsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+/* harmony import */ var _hooks_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/redux */ "./src/hooks/redux.ts");
+/* harmony import */ var _pages_AuthUserPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/AuthUserPage */ "./src/pages/AuthUserPage.tsx");
+/* harmony import */ var _pages_NotAuthPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/NotAuthPage */ "./src/pages/NotAuthPage.tsx");
+/* harmony import */ var _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/reducers/authSlice */ "./src/store/reducers/authSlice.ts");
+/* harmony import */ var _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/reducers/listSlice */ "./src/store/reducers/listSlice.ts");
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 function Layout() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      open = _React$useState2[0],
-      setOpen = _React$useState2[1];
-
-  var handleClose = function handleClose() {
-    setOpen(false);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_AuthUserPage__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  var isAuth = (0,_hooks_redux__WEBPACK_IMPORTED_MODULE_1__.useAppSelector)(function (state) {
+    return state.authReducer.isAuth;
+  });
+  var setAuth = _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_4__.AuthSlice.actions.setAuth;
+  var setListItems = _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_5__.listSlice.actions.setListItems;
+  var dispatch = (0,_hooks_redux__WEBPACK_IMPORTED_MODULE_1__.useAppDispatch)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //@ts-ignore
+    chrome.storage.sync.get(['replaceState'], function (result) {
+      if (result.replaceState) {
+        dispatch(setListItems(result.replaceState));
+        setAuth(true);
+      }
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, isAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_AuthUserPage__WEBPACK_IMPORTED_MODULE_2__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_NotAuthPage__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout);
@@ -19311,9 +19288,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 /* harmony import */ var _redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./redux */ "./src/hooks/redux.ts");
 /* harmony import */ var _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/reducers/listSlice */ "./src/store/reducers/listSlice.ts");
+/* harmony import */ var _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/reducers/authSlice */ "./src/store/reducers/authSlice.ts");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -19336,6 +19314,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function useList() {
   var listItems = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppSelector)(function (state) {
     return state.userReducer.list;
@@ -19348,6 +19327,17 @@ function useList() {
       setOpen = _useState2[1];
 
   var dispatch = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppDispatch)();
+  var setAuth = _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_3__.AuthSlice.actions.setAuth;
+  var isAuth = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppSelector)(function (state) {
+    return state.authReducer.isAuth;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!isAuth) {
+      if (listItems.length !== 0) {
+        dispatch(setAuth(true));
+      }
+    }
+  }, [listItems]);
 
   var findListElementById = function findListElementById(key) {
     return listItems.find(function (listItem) {
@@ -19366,7 +19356,7 @@ function useList() {
   var addNewListItem = function addNewListItem(word, replacmentWord) {
     var newObj = {
       checked: false,
-      key: (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])(),
+      key: (0,uuid__WEBPACK_IMPORTED_MODULE_4__["default"])(),
       replacmentWord: replacmentWord,
       word: word
     };
@@ -19675,6 +19665,108 @@ function Layout() {
 
 /***/ }),
 
+/***/ "./src/pages/NotAuthPage.tsx":
+/*!***********************************!*\
+  !*** ./src/pages/NotAuthPage.tsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/App.css */ "./src/styles/App.css");
+/* harmony import */ var _components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/modals/createNewWorldModal */ "./src/components/modals/createNewWorldModal.tsx");
+/* harmony import */ var _hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useWordsModal */ "./src/hooks/useWordsModal.tsx");
+/* harmony import */ var _hooks_UseList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/UseList */ "./src/hooks/UseList.tsx");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
+
+
+
+
+
+
+
+
+function NotAuthPage() {
+  var _useWordsModal = (0,_hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_3__["default"])(),
+      ModalCard = _useWordsModal.ModalCard,
+      closeModal = _useWordsModal.closeModal,
+      open = _useWordsModal.open,
+      openChangeWordModal = _useWordsModal.openChangeWordModal,
+      openCreteWordModal = _useWordsModal.openCreteWordModal,
+      openModal = _useWordsModal.openModal;
+
+  var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_4__["default"])(),
+      removeListItems = _useList.removeListItems;
+
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    return function () {
+      console.log('Unmount');
+    };
+  });
+
+  var removeListImtemClickHandler = function removeListImtemClickHandler() {
+    removeListItems();
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    open: open,
+    handleClose: closeModal
+  }, ModalCard), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "notAuthPage__header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    variant: "outlined",
+    onClick: function onClick() {
+      openCreteWordModal();
+    }
+  }, "Create"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    align: 'center'
+  }, "create your first replacement for the word you would like to replace on all web pages"))));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NotAuthPage);
+
+/***/ }),
+
+/***/ "./src/store/reducers/authSlice.ts":
+/*!*****************************************!*\
+  !*** ./src/store/reducers/authSlice.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthSlice": () => (/* binding */ AuthSlice),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+
+var initialState = {
+  isAuth: false
+};
+var AuthSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+  name: 'Auth',
+  initialState: initialState,
+  reducers: {
+    setAuth: function setAuth(state, action) {
+      state.isAuth = action.payload;
+    }
+  }
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AuthSlice.reducer);
+
+/***/ }),
+
 /***/ "./src/store/reducers/listSlice.ts":
 /*!*****************************************!*\
   !*** ./src/store/reducers/listSlice.ts ***!
@@ -19687,35 +19779,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "listSlice": () => (/* binding */ listSlice)
 /* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
-
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 
 var initialState = {
-  list: [{
-    key: (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])(),
-    checked: false,
-    word: 'pod',
-    replacmentWord: 'sas'
-  }, {
-    key: (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])(),
-    checked: false,
-    word: 'phonk',
-    replacmentWord: 'fonk'
-  }, {
-    key: (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])(),
-    checked: false,
-    word: 'set',
-    replacmentWord: 'sit'
-  }]
+  list: [// {
+    //     key:uuidv4(),
+    //     checked:false,
+    //     word:'pod',
+    //     replacmentWord:'sas'
+    // },
+    // {
+    //     key:uuidv4(),
+    //     checked:false,
+    //     word:'phonk',
+    //     replacmentWord:'fonk'
+    // },
+    // {
+    //     key:uuidv4(),
+    //     checked:false,
+    //     word:'set',
+    //     replacmentWord:'sit'
+    // }
+  ]
 };
-var listSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
+var listSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: 'listItems',
   initialState: initialState,
   reducers: {
     setListItems: function setListItems(state, action) {
-      // console.log('action.payload')
-      // alert(action.payload)
+      // alert('set')
       //@ts-ignore
       chrome.runtime.sendMessage({
         replaceState: action.payload
@@ -19739,16 +19831,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setupStore": () => (/* binding */ setupStore)
 /* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _reducers_listSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reducers/listSlice */ "./src/store/reducers/listSlice.ts");
+/* harmony import */ var _reducers_authSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/authSlice */ "./src/store/reducers/authSlice.ts");
 
 
-var rootReducer = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  userReducer: _reducers_listSlice__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+var rootReducer = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  userReducer: _reducers_listSlice__WEBPACK_IMPORTED_MODULE_0__["default"],
+  authReducer: _reducers_authSlice__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 var setupStore = function setupStore() {
-  return (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.configureStore)({
+  return (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.configureStore)({
     reducer: rootReducer
   });
 };
@@ -19791,7 +19886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    max-width: 360px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,gBAAgB;AACpB;AACA;IACI,sBAAsB;IACtB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":[".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    max-width: 360px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    max-width: 360px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,gBAAgB;AACpB;AACA;IACI,sBAAsB;IACtB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB","sourcesContent":[".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    max-width: 360px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62617,7 +62712,7 @@ function combine (array, callback) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("2096d704757626639448")
+/******/ 		__webpack_require__.h = () => ("3c52d3bb796065762150")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

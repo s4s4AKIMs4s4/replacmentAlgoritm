@@ -14,3 +14,9 @@
     min-height: 400px;
     min-width: 360px;
 }
+.notAuthPage__header{
+    display: flex;
+    max-width: 360px;
+    justify-content: center;
+    align-items: center;
+}
