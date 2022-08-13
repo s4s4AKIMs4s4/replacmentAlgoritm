@@ -19646,6 +19646,14 @@ function Layout() {
     open: open,
     handleClose: closeModal
   }, ModalCard), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    style: {
+      position: 'sticky',
+      top: '0px',
+      zIndex: 999,
+      backgroundColor: 'white',
+      height: '55px'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "header"
@@ -19656,7 +19664,7 @@ function Layout() {
     }
   }, "Create"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onClick: removeListImtemClickHandler
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CheckboxList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CheckboxList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     openChangeWordModal: openChangeWordModal
   }))));
 }
@@ -19886,7 +19894,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    max-width: 360px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,gBAAgB;AACpB;AACA;IACI,sBAAsB;IACtB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB","sourcesContent":[".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    max-width: 360px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    max-width: 360px;\r\n    position:sticky;\r\n    min-width: 327px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 10px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 9999;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,gBAAgB;IAChB,eAAe;IACf,gBAAgB;AACpB;AACA;IACI,sBAAsB;IACtB,gBAAgB;IAChB,SAAS;IACT,gBAAgB;IAChB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB","sourcesContent":[".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    max-width: 360px;\r\n    position:sticky;\r\n    min-width: 327px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 10px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 9999;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62712,7 +62720,7 @@ function combine (array, callback) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("3c52d3bb796065762150")
+/******/ 		__webpack_require__.h = () => ("e56f21ae0c493113d367")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

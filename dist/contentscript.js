@@ -1,8 +1,6 @@
 const targetNode = document.body
 const config = { attributes: true, childList: true, subtree: true };
 let listWords = null
-// голифан идеал 
-// path polygon circle stop ellipse rect META LINK SCRIPT IFRAME STYLE  IMG NOSCRIPT
 const filterTextContent = (word) => {
     const mapFilter = new Map([
         ['path', 'path'],
@@ -21,16 +19,22 @@ const filterTextContent = (word) => {
       ]);
       return mapFilter.get(word)
 }
-
+options = {
+    attributes: false,
+    characterData: true,
+    subtree: true,
+  }
 const reolacmentStrategy = (destinationWord, replacmentWord) => {
     const iterableDOOM = (Element) => {
         const children = [...Element.children]
         if(children.length === 0)
-            if(!filterTextContent(Element.tagName))
-                Element.textContent = Element.textContent.replace(
-                    new RegExp(`${destinationWord}`,'gmi'), 
-                    replacmentWord 
-                )       
+            if(!filterTextContent(Element.tagName)){
+                    const replacmentOutput = Element.textContent.replace(
+                        new RegExp(`${destinationWord}`,'gmi'), 
+                        replacmentWord 
+                    )
+                    Element.textContent = replacmentOutput
+            }      
         children.forEach(element =>  iterableDOOM(element) );
     }
     return iterableDOOM
@@ -57,7 +61,11 @@ function debounce(f, ms) {
 const debouncedMakeReplace =  debounce(makeReplace, 500)
 
 const callback = function(mutationList, observer) {
-    debouncedMakeReplace()
+    for(mutation of mutationList){
+        if(mutation.type ==='attributes') continue
+        debouncedMakeReplace()
+    }
+
 };
 
 const findElement = (wordList, key) => {
@@ -84,12 +92,14 @@ const updateListWords = (currentListWords) => {
                 listWord.replacmentWord !== findedWord.replacmentWord ||
                 listWord.word !== findedWord.word
             ){
+                console.log('log!')
                 reolacmentStrategy(listWord.replacmentWord, findedWord.replacmentWord)(body)
             }
             newListWords.push({...findedWord})
         }
         else{
-            reolacmentStrategy(listWord.replacmentWord,listWord.word)(body)
+            console.log('log!!!!!')
+            reolacmentStrategy( listWord.replacmentWord, listWord.word )(body)
         }
     })
     if(listWords.replaceState.length < currentListWords.replaceState.length){
@@ -97,7 +107,8 @@ const updateListWords = (currentListWords) => {
     }
     listWords.replaceState = newListWords
 }
-const observer = new MutationObserver(callback);
+
+const observer = new MutationObserver(callback,options);
 observer.observe(targetNode, config);
 
 chrome.runtime.onMessage.addListener(

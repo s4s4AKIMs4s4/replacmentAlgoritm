@@ -1,11 +1,20 @@
 .header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 360px;
+    position:sticky;
+    min-width: 327px;
 }
 .card{
     padding: 0 16px 0 16px;
     max-width: 327px;
+    top: 10px;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 .content{
     display: flex;

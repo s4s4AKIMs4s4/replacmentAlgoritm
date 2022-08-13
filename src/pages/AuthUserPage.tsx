@@ -6,6 +6,8 @@ import '../styles/App.css'
 import CreateNewWorldModal from '../components/modals/createNewWorldModal';
 import useWordsModal from '../hooks/useWordsModal';
 import useList from '../hooks/UseList';
+import ButtonAppBar from '../components/ButtonAppBar';
+import Card from '@mui/material/Card';
 
 function Layout(){
     const {
@@ -33,13 +35,21 @@ function Layout(){
                 {ModalCard}
             </CreateNewWorldModal>
 
-            <div className='card'>
-                <div className = "header">
-                    <Button variant="outlined" onClick={() => {openCreteWordModal()}}>Create</Button>
-                    <DeleteIcon onClick={removeListImtemClickHandler}/>
+            <div   style = {{
+                position: 'sticky',
+                top: '0px',
+                zIndex:999,
+                backgroundColor:'white',
+                height:'55px'
+            }}>    
+                <div className='card'>
+                    <div className = "header">
+                        <Button variant="outlined" onClick={() => {openCreteWordModal()}}>Create</Button> 
+                        <DeleteIcon onClick={removeListImtemClickHandler}/>
+                    </div>
                 </div>
             </div>
-
+           
             <div>
                 <CheckboxList 
                     openChangeWordModal = {openChangeWordModal}
