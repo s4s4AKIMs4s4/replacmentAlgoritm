@@ -4,12 +4,15 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { listSlice } from './store/reducers/listSlice';
 import { setupStore } from './store/store';
-
+import {createRoot} from 'react-dom/client';
 const store = setupStore()
+//@ts-ignore
+const root = createRoot(document.getElementById("root") as HTMLElement);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-  document.getElementById('root')
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+  </React.StrictMode>
 );

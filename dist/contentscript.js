@@ -14,8 +14,8 @@ const filterTextContent = (word) => {
         ['SCRIPT', 'SCRIPT'],
         ['IFRAME','IFRAME'],
         ['STYLE', 'STYLE'],
-        ['IMG','IMG'],
-        ['NOSCRIPT', 'NOSCRIPT'],
+        ['IMG','IMG'],  
+        ['NOSCRIPT', 'NOSCRIPT'],                     
       ]);
       return mapFilter.get(word)
 }

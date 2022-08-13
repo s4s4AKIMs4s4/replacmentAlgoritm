@@ -15,7 +15,7 @@ function NotAuthPage(){
         open, 
         openChangeWordModal, 
         openCreteWordModal,
-        openModal,
+        Modal
     } = useWordsModal()
 
     const {removeListItems} = useList()
@@ -29,11 +29,12 @@ function NotAuthPage(){
 
     return <>
         <div className = 'content'>
-            
-            <CreateNewWorldModal open = {open}  handleClose = {closeModal}> 
+            {/* Modal */}
+            {/* <CreateNewWorldModal open = {open}  handleClose = {closeModal}> 
                 {ModalCard}
-            </CreateNewWorldModal>
 
+            </CreateNewWorldModal> */}
+            {Modal}
             <div className='card'>
                 <div className = "notAuthPage__header">
                     <Button variant="outlined" onClick={() => {openCreteWordModal()}}>Create</Button>

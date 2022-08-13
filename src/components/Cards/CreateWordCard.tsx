@@ -16,7 +16,7 @@ import useCardchangeWords from '../../hooks/useCardchangeWords';
 
 const ariaLabel = { 'aria-label': 'description' };
 
-const  CreateWordCard:React.FC<IWordCard> = ( {handleClose}) => {
+const  CreateWordCard = React.forwardRef<any,IWordCard>(( {handleClose},ref) => {
   const {addNewListItem, listItems, changeChekedList} = useList()
   const {changeReplacment, changeWord, wordState} = useCardchangeWords()
 
@@ -71,7 +71,8 @@ const  CreateWordCard:React.FC<IWordCard> = ( {handleClose}) => {
       </CardActions>
     </Card>
   );
-}
+})
+CreateWordCard.displayName = "CreateWordCard";
 
 const style = {
   position: 'absolute' as 'absolute',

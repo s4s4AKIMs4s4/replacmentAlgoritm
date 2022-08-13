@@ -16,7 +16,7 @@ function Layout(){
         open, 
         openChangeWordModal, 
         openCreteWordModal,
-        openModal,
+        Modal
     } = useWordsModal()
 
     const {removeListItems} = useList()
@@ -30,11 +30,7 @@ function Layout(){
 
     return <>
         <div className = 'content'>
-            
-            <CreateNewWorldModal open = {open}  handleClose = {closeModal}> 
-                {ModalCard}
-            </CreateNewWorldModal>
-
+            {Modal}
             <div   style = {{
                 position: 'sticky',
                 top: '0px',

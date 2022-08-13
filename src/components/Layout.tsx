@@ -11,14 +11,14 @@ function Layout(){
     const dispatch = useAppDispatch()
     useEffect(() => {
       //@ts-ignore
-      chrome.storage.sync.get(['replaceState'], function(result) {
-        if(result.replaceState){
-          dispatch(
-            setListItems(result.replaceState)
-          )
-          setAuth(true)
-        }
-      })
+      // chrome.storage.sync.get(['replaceState'], function(result) {
+      //   if(result.replaceState){
+      //     dispatch(
+      //       setListItems(result.replaceState)
+      //     )
+      //     setAuth(true)
+      //   }
+      // })
     },[])
     return <>
       {

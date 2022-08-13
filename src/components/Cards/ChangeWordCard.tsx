@@ -12,10 +12,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { IChangeWord } from '../../models';
 import useList from '../../hooks/UseList';
 import useCardchangeWords from '../../hooks/useCardchangeWords';
-
 const ariaLabel = { 'aria-label': 'description' };
 
-const  ChangeWordCard:React.FC<IChangeWord> = ( props ) => {
+const  ChangeWordCard = React.forwardRef<any,IChangeWord>(( props, ref ) => {
   const {addNewListItem, listItems, changeListItem} = useList()
   const {changeReplacment, changeWord, wordState, setWordState} = useCardchangeWords()
 
@@ -72,7 +71,8 @@ const  ChangeWordCard:React.FC<IChangeWord> = ( props ) => {
       </CardActions>
     </Card>
   );
-}
+})
+ChangeWordCard.displayName = "ChangeWordCard";
 
 const style = {
   position: 'absolute' as 'absolute',
