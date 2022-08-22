@@ -18862,32 +18862,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/App.css */ "./src/styles/App.css");
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Layout */ "./src/components/Layout.tsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
 
 function App() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      open = _React$useState2[0],
-      setOpen = _React$useState2[1];
-
-  var handleClose = function handleClose() {
-    setOpen(false);
-  };
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 }
 
@@ -18932,8 +18911,7 @@ __webpack_require__.r(__webpack_exports__);
 var ariaLabel = {
   'aria-label': 'description'
 };
-
-var ChangeWordCard = function ChangeWordCard(props) {
+var ChangeWordCard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function (props, ref) {
   var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_2__["default"])(),
       addNewListItem = _useList.addNewListItem,
       listItems = _useList.listItems,
@@ -18983,8 +18961,8 @@ var ChangeWordCard = function ChangeWordCard(props) {
     onClick: changeWordHandler,
     size: "small"
   }, "Change")));
-};
-
+});
+ChangeWordCard.displayName = "ChangeWordCard";
 var style = {
   position: 'absolute',
   top: '50%',
@@ -19033,8 +19011,7 @@ __webpack_require__.r(__webpack_exports__);
 var ariaLabel = {
   'aria-label': 'description'
 };
-
-var CreateWordCard = function CreateWordCard(_ref) {
+var CreateWordCard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function (_ref, ref) {
   var handleClose = _ref.handleClose;
 
   var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_2__["default"])(),
@@ -19083,8 +19060,8 @@ var CreateWordCard = function CreateWordCard(_ref) {
     onClick: createWord,
     size: "small"
   }, "Create")));
-};
-
+});
+CreateWordCard.displayName = "CreateWordCard";
 var style = {
   position: 'absolute',
   top: '50%',
@@ -19159,13 +19136,12 @@ var CheckboxList = function CheckboxList(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: listItem.key,
       secondaryAction: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        edge: "end",
-        "aria-label": "comments"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__["default"], {
         onClick: function onClick() {
           return openChangeWordModal(listItem.word, listItem.replacmentWord, listItem.key);
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        },
+        edge: "end",
+        "aria-label": "comments"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Settings__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
         edge: "end",
         "aria-label": "comments"
       })),
@@ -19225,12 +19201,12 @@ function Layout() {
   var setAuth = _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_4__.AuthSlice.actions.setAuth;
   var setListItems = _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_5__.listSlice.actions.setListItems;
   var dispatch = (0,_hooks_redux__WEBPACK_IMPORTED_MODULE_1__.useAppDispatch)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(function () {
     //@ts-ignore
     chrome.storage.sync.get(['replaceState'], function (result) {
       if (result.replaceState) {
         dispatch(setListItems(result.replaceState));
-        setAuth(true);
+        dispatch(setAuth(true));
       }
     });
   }, []);
@@ -19262,7 +19238,6 @@ var CreateNewWorldModal = function CreateNewWorldModal(_ref) {
   var handleClose = _ref.handleClose,
       open = _ref.open,
       children = _ref.children;
-  console.log('Modal');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
     open: open,
     onClose: handleClose,
@@ -19298,18 +19273,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -19320,12 +19283,6 @@ function useList() {
     return state.userReducer.list;
   });
   var setListItems = _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_2__.listSlice.actions.setListItems;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      open = _useState2[0],
-      setOpen = _useState2[1];
-
   var dispatch = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppDispatch)();
   var setAuth = _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_3__.AuthSlice.actions.setAuth;
   var isAuth = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppSelector)(function (state) {
@@ -19456,8 +19413,6 @@ function useCardchangeWords() {
 
   var changeWord = function changeWord(e) {
     setWordState(function (prev) {
-      console.log('prev');
-      console.log(prev);
       return _objectSpread(_objectSpread({}, prev), {}, {
         word: e.target.value
       });
@@ -19499,6 +19454,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Cards_CreateWordCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Cards/CreateWordCard */ "./src/components/Cards/CreateWordCard.tsx");
 /* harmony import */ var _components_Cards_ChangeWordCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Cards/ChangeWordCard */ "./src/components/Cards/ChangeWordCard.tsx");
+/* harmony import */ var _components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/modals/createNewWorldModal */ "./src/components/modals/createNewWorldModal.tsx");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -19515,46 +19477,78 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+var ModalEnum;
+
+(function (ModalEnum) {
+  ModalEnum["CREATE"] = "CREATE";
+  ModalEnum["CHANGE"] = "CHANGE";
+  ModalEnum["NONE"] = "NONE";
+})(ModalEnum || (ModalEnum = {}));
+
 function useWordsModal() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null)),
       _useState2 = _slicedToArray(_useState, 2),
-      open = _useState2[0],
-      setOpen = _useState2[1];
+      ModalCard = _useState2[0],
+      setModalCard = _useState2[1];
 
-  var closeModal = function closeModal() {
-    return setOpen(false);
-  };
-
-  var openModal = function openModal() {
-    return setOpen(true);
-  };
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null)),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    currentModal: ModalEnum.NONE,
+    isOpen: false
+  }),
       _useState4 = _slicedToArray(_useState3, 2),
-      ModalCard = _useState4[0],
-      setModalCard = _useState4[1];
+      ModalSatate = _useState4[0],
+      setModalState = _useState4[1];
 
   var openCreteWordModal = function openCreteWordModal() {
-    setOpen(true);
-    setModalCard( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Cards_CreateWordCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      handleClose: closeModal
-    }));
+    setModalState({
+      currentModal: ModalEnum.CREATE,
+      isOpen: true
+    });
   };
+
+  var closeModal = function closeModal() {
+    setModalState(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, {
+        isOpen: false
+      });
+    });
+  };
+
+  var ChangeObject = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({});
 
   var openChangeWordModal = function openChangeWordModal(word, replacmentWord, key) {
-    setOpen(true);
-    setModalCard( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Cards_ChangeWordCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      handleClose: closeModal,
-      replacmentWord: replacmentWord,
+    ChangeObject.current = {
       word: word,
-      wordKey: key
-    }));
+      replacmentWord: replacmentWord,
+      key: key
+    };
+    setModalState({
+      currentModal: ModalEnum.CHANGE,
+      isOpen: true
+    });
   };
 
+  var Modal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    if (ModalSatate.currentModal === ModalEnum.CREATE) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      open: ModalSatate.isOpen,
+      handleClose: closeModal
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Cards_CreateWordCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      handleClose: closeModal
+    }));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      open: ModalSatate.isOpen,
+      handleClose: closeModal
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Cards_ChangeWordCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      handleClose: closeModal,
+      replacmentWord: ChangeObject.current.replacmentWord,
+      word: ChangeObject.current.word,
+      wordKey: ChangeObject.current.key
+    }));
+  }, [open, ModalSatate]);
   return {
+    Modal: Modal,
     open: open,
     closeModal: closeModal,
-    openModal: openModal,
     ModalCard: ModalCard,
     openChangeWordModal: openChangeWordModal,
     openCreteWordModal: openCreteWordModal
@@ -19573,19 +19567,21 @@ function useWordsModal() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./src/App.tsx");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store/store */ "./src/store/store.ts");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./src/App.tsx");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./src/store/store.ts");
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 
 
 
 
 
-var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_4__.setupStore)();
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.setupStore)(); //@ts-ignore
+
+var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_4__.createRoot)(document.getElementById("root"));
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__.Provider, {
   store: store
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App__WEBPACK_IMPORTED_MODULE_3__["default"], null)), document.getElementById('root'));
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null)), ","));
 
 /***/ }),
 
@@ -19600,16 +19596,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_CheckboxList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/CheckboxList */ "./src/components/CheckboxList.tsx");
-/* harmony import */ var _mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/Delete */ "./node_modules/@mui/icons-material/Delete.js");
+/* harmony import */ var _mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/Delete */ "./node_modules/@mui/icons-material/Delete.js");
 /* harmony import */ var _styles_App_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/App.css */ "./src/styles/App.css");
-/* harmony import */ var _components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/modals/createNewWorldModal */ "./src/components/modals/createNewWorldModal.tsx");
-/* harmony import */ var _hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useWordsModal */ "./src/hooks/useWordsModal.tsx");
-/* harmony import */ var _hooks_UseList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/UseList */ "./src/hooks/UseList.tsx");
-
+/* harmony import */ var _hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useWordsModal */ "./src/hooks/useWordsModal.tsx");
+/* harmony import */ var _hooks_UseList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/UseList */ "./src/hooks/UseList.tsx");
 
 
 
@@ -19619,22 +19613,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Layout() {
-  var _useWordsModal = (0,_hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_4__["default"])(),
-      ModalCard = _useWordsModal.ModalCard,
-      closeModal = _useWordsModal.closeModal,
-      open = _useWordsModal.open,
+  var _useWordsModal = (0,_hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_3__["default"])(),
       openChangeWordModal = _useWordsModal.openChangeWordModal,
       openCreteWordModal = _useWordsModal.openCreteWordModal,
-      openModal = _useWordsModal.openModal;
+      Modal = _useWordsModal.Modal;
 
-  var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_5__["default"])(),
+  var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_4__["default"])(),
       removeListItems = _useList.removeListItems;
-
-  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-    return function () {
-      console.log('Unmount');
-    };
-  });
 
   var removeListImtemClickHandler = function removeListImtemClickHandler() {
     removeListItems();
@@ -19642,29 +19627,20 @@ function Layout() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    open: open,
-    handleClose: closeModal
-  }, ModalCard), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    style: {
-      position: 'sticky',
-      top: '0px',
-      zIndex: 999,
-      backgroundColor: 'white',
-      height: '55px'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, Modal, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header__card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    className: "header__create-button",
     variant: "outlined",
     onClick: function onClick() {
       openCreteWordModal();
     }
-  }, "Create"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "Create"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "header__delete-button",
     onClick: removeListImtemClickHandler
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CheckboxList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CheckboxList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     openChangeWordModal: openChangeWordModal
   }))));
 }
@@ -19684,16 +19660,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/App.css */ "./src/styles/App.css");
-/* harmony import */ var _components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/modals/createNewWorldModal */ "./src/components/modals/createNewWorldModal.tsx");
-/* harmony import */ var _hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useWordsModal */ "./src/hooks/useWordsModal.tsx");
-/* harmony import */ var _hooks_UseList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/UseList */ "./src/hooks/UseList.tsx");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
-
-
+/* harmony import */ var _hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useWordsModal */ "./src/hooks/useWordsModal.tsx");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
 
 
 
@@ -19701,42 +19673,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NotAuthPage() {
-  var _useWordsModal = (0,_hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_3__["default"])(),
-      ModalCard = _useWordsModal.ModalCard,
-      closeModal = _useWordsModal.closeModal,
-      open = _useWordsModal.open,
-      openChangeWordModal = _useWordsModal.openChangeWordModal,
+  var _useWordsModal = (0,_hooks_useWordsModal__WEBPACK_IMPORTED_MODULE_2__["default"])(),
       openCreteWordModal = _useWordsModal.openCreteWordModal,
-      openModal = _useWordsModal.openModal;
-
-  var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_4__["default"])(),
-      removeListItems = _useList.removeListItems;
+      Modal = _useWordsModal.Modal;
 
   react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
     return function () {
       console.log('Unmount');
     };
   });
-
-  var removeListImtemClickHandler = function removeListImtemClickHandler() {
-    removeListItems();
-  };
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    open: open,
-    handleClose: closeModal
-  }, ModalCard), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "notAuthPage__header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, Modal, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "header__create-button",
     variant: "outlined",
     onClick: function onClick() {
       openCreteWordModal();
     }
-  }, "Create"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, "Create")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
     align: 'center'
   }, "create your first replacement for the word you would like to replace on all web pages"))));
 }
@@ -19894,7 +19850,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    max-width: 360px;\r\n    position:sticky;\r\n    min-width: 327px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 10px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 9999;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,gBAAgB;IAChB,eAAe;IACf,gBAAgB;AACpB;AACA;IACI,sBAAsB;IACtB,gBAAgB;IAChB,SAAS;IACT,gBAAgB;IAChB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB","sourcesContent":[".header{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    max-width: 360px;\r\n    position:sticky;\r\n    min-width: 327px;\r\n}\r\n.card{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 10px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 9999;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 0px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 99;\r\n    background-color: white;\r\n    height: 55px;\r\n}\r\n.header__card{ \r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    min-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;IACtB,gBAAgB;IAChB,QAAQ;IACR,gBAAgB;IAChB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,uBAAuB;IACvB,YAAY;AAChB;AACA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB","sourcesContent":[".header{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 0px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 99;\r\n    background-color: white;\r\n    height: 55px;\r\n}\r\n.header__card{ \r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    min-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19921,7 +19877,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n.modalForm___formItem{\r\n\r\n}\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/card.css"],"names":[],"mappings":"AAAA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,gBAAgB;AACpB;AACA;;AAEA;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB","sourcesContent":[".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n.modalForm___formItem{\r\n\r\n}\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/card.css"],"names":[],"mappings":"AAAA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,gBAAgB;AACpB;;;AAGA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB","sourcesContent":[".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -51371,6 +51327,39 @@ if (
 
 /***/ }),
 
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var m = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+if (false) {} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!
@@ -62720,7 +62709,7 @@ function combine (array, callback) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("e56f21ae0c493113d367")
+/******/ 		__webpack_require__.h = () => ("c3663f49aa1b74e36ed2")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

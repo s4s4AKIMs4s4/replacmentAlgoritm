@@ -7,78 +7,24 @@ interface IInitialState {
 }
 const initialState: IInitialState = {
     list:[
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'pod',
-            replacmentWord:'sas'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'phonk',
-            replacmentWord:'fonk'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'set',
-            replacmentWord:'sit'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'pod',
-            replacmentWord:'sas'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'phonk',
-            replacmentWord:'fonk'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'set',
-            replacmentWord:'sit'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'pod',
-            replacmentWord:'sas'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'phonk',
-            replacmentWord:'fonk'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'set',
-            replacmentWord:'sit'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'pod',
-            replacmentWord:'sas'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'phonk',
-            replacmentWord:'fonk'
-        },
-        {
-            key:uuidv4(),
-            checked:false,
-            word:'set',
-            replacmentWord:'sit'
-        }   
+        // {
+        //     key:uuidv4(),
+        //     checked:false,
+        //     word:'pod',
+        //     replacmentWord:'sas'
+        // },
+        // {
+        //     key:uuidv4(),
+        //     checked:false,
+        //     word:'phonk',
+        //     replacmentWord:'fonk'
+        // },
+        // {
+        //     key:uuidv4(),
+        //     checked:false,
+        //     word:'set',
+        //     replacmentWord:'sit'
+        // }
     ] 
 }
 
@@ -89,12 +35,10 @@ export const listSlice = createSlice({
         setListItems(state:IInitialState, action:PayloadAction<IListItem[]>){
             // alert('set')
             //@ts-ignore
-            // chrome.runtime.sendMessage({replaceState: action.payload})
+            chrome.runtime.sendMessage({replaceState: action.payload})
             state.list = action.payload            
         }
     }
 })
 
 export default listSlice.reducer;
-
-

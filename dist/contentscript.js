@@ -92,13 +92,11 @@ const updateListWords = (currentListWords) => {
                 listWord.replacmentWord !== findedWord.replacmentWord ||
                 listWord.word !== findedWord.word
             ){
-                console.log('log!')
                 reolacmentStrategy(listWord.replacmentWord, findedWord.replacmentWord)(body)
             }
             newListWords.push({...findedWord})
         }
         else{
-            console.log('log!!!!!')
             reolacmentStrategy( listWord.replacmentWord, listWord.word )(body)
         }
     })
