@@ -4,7 +4,7 @@ import React from "react";
 import CreateWordCard from "../components/Cards/CreateWordCard";
 import ChangeWordCard from "../components/Cards/ChangeWordCard";
 import CreateNewWorldModal from "../components/modals/createNewWorldModal";
-import TestJSX from "./TestJSX";
+
 enum ModalEnum {
     CREATE = "CREATE",
     CHANGE = "CHANGE",
@@ -28,7 +28,6 @@ export default function useWordsModal() {
             currentModal: ModalEnum.CREATE,
             isOpen: true
         })
-
     }
 
     const closeModal = () => {
@@ -36,9 +35,9 @@ export default function useWordsModal() {
             return { ...prev, isOpen: false }
         })
     }
-    interface IChangeObject{
-        word: string, 
-        replacmentWord: string, 
+    interface IChangeObject {
+        word: string,
+        replacmentWord: string,
         key: string
     }
 
@@ -46,7 +45,7 @@ export default function useWordsModal() {
         {} as IChangeObject
     )
     const openChangeWordModal = (word: string, replacmentWord: string, key: string) => {
-        
+
         ChangeObject.current = {
             word,
             replacmentWord,
@@ -65,13 +64,13 @@ export default function useWordsModal() {
                     handleClose={closeModal}
                 />
             </CreateNewWorldModal>
-        else 
+        else
             return <CreateNewWorldModal open={ModalSatate.isOpen} handleClose={closeModal}>
-                <ChangeWordCard 
+                <ChangeWordCard
                     handleClose={closeModal}
-                    replacmentWord = { ChangeObject.current.replacmentWord }
-                    word = { ChangeObject.current.word }
-                    wordKey = { ChangeObject.current.key }
+                    replacmentWord={ChangeObject.current.replacmentWord}
+                    word={ChangeObject.current.word}
+                    wordKey={ChangeObject.current.key}
                 />
             </CreateNewWorldModal>
     }, [open, ModalSatate])

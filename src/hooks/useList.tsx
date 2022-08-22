@@ -6,10 +6,8 @@ import { listSlice } from "../store/reducers/listSlice";
 import { AuthSlice } from "../store/reducers/authSlice";
 
 export default function useList() {
-
     const listItems = useAppSelector(state => state.userReducer.list)
     const { setListItems } = listSlice.actions
-    const [open, setOpen] = useState<boolean>(false)
     const dispatch = useAppDispatch()
     const { setAuth } = AuthSlice.actions
     const isAuth = useAppSelector(state => state.authReducer.isAuth)

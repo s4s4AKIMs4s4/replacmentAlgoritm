@@ -23,17 +23,7 @@ function sendToContenJs(tabId, changeInfo, tab){
     });
 }
 
-// const makeReplace = () => {
-//     const body = document.querySelector('body')
-//     chrome.storage.sync.get(['replaceState'], function(result) {
-//         result.replaceState.map((wordObject) => {
-//             reolacmentStrategy(wordObject.word, wordObject.replacmentWord)(body)
-//         })
-//       })
-// }
-
 chrome.runtime.onInstalled.addListener(()=>{
-
     console.log('install')
 })
 

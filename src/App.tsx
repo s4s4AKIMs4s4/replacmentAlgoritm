@@ -10,13 +10,6 @@ import { listSlice } from './store/reducers/listSlice';
 import { v4 as uuidv4 } from 'uuid';
 
 function App(){
-
-
-    const [open,setOpen] = React.useState<boolean>(false)
-    const handleClose = () => {
-      setOpen(false)
-    }
-
     return <>
         <div>
            <Layout/>

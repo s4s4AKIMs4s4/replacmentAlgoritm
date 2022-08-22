@@ -4,9 +4,7 @@
     flex-direction: column;
     column-gap: 10px;
 }
-.modalForm___formItem{
 
-}
 
 .modalForm div:nth-of-type(1){
     flex-grow: 1;

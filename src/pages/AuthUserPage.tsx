@@ -1,57 +1,40 @@
 import { Button } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import CheckboxList from '../components/CheckboxList'
 import DeleteIcon from '@mui/icons-material/Delete';
 import '../styles/App.css'
-import CreateNewWorldModal from '../components/modals/createNewWorldModal';
 import useWordsModal from '../hooks/useWordsModal';
 import useList from '../hooks/UseList';
-import ButtonAppBar from '../components/ButtonAppBar';
-import Card from '@mui/material/Card';
 
-function Layout(){
+function Layout() {
     const {
-        ModalCard, 
-        closeModal, 
-        open, 
-        openChangeWordModal, 
+        openChangeWordModal,
         openCreteWordModal,
         Modal
     } = useWordsModal()
 
-    const {removeListItems} = useList()
-    React.useEffect(() =>{
-        return () => {console.log('Unmount')}
-      })
+    const { removeListItems } = useList()
 
     const removeListImtemClickHandler = () => {
         removeListItems()
-    }  
+    }
 
     return <>
-        <div className = 'content'>
+        <div className='content'>
             {Modal}
-            <div   style = {{
-                position: 'sticky',
-                top: '0px',
-                zIndex:999,
-                backgroundColor:'white',
-                height:'55px'
-            }}>    
-                <div className='card'>
-                    <div className = "header">
-                        <Button variant="outlined" onClick={() => {openCreteWordModal()}}>Create</Button> 
-                        <DeleteIcon onClick={removeListImtemClickHandler}/>
-                    </div>
+            
+            <div className="header">
+                <div className='header__card'>
+                    <Button className="header__create-button" variant="outlined" onClick={() => { openCreteWordModal() }}>Create</Button>
+                    <DeleteIcon className="header__delete-button" onClick={removeListImtemClickHandler} />
                 </div>
             </div>
-           
+
             <div>
-                <CheckboxList 
-                    openChangeWordModal = {openChangeWordModal}
+                <CheckboxList
+                    openChangeWordModal={openChangeWordModal}
                 />
             </div>
-
         </div>
     </>
 }

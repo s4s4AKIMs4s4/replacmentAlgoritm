@@ -1,20 +1,14 @@
 import React, { useEffect } from "react"
 import { IWordState } from "../models"
 
-
-
 function useCardchangeWords(){
-
-
     const [wordState, setWordState] = React.useState<IWordState>({
         replacmentWord:'',
         word:''
       })
-    
+
       const changeWord = (e:React.ChangeEvent<HTMLInputElement>) => {
         setWordState((prev) => {
-          console.log('prev')
-          console.log(prev)
           return {...prev,word:e.target.value}
         })  
       }
@@ -24,6 +18,7 @@ function useCardchangeWords(){
           return {...prev,replacmentWord:e.target.value}
         })  
       }
+      
       return {wordState, changeWord, changeReplacment,setWordState}
 }
 export default useCardchangeWords

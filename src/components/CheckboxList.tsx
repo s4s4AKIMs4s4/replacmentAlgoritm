@@ -13,8 +13,6 @@ interface ICheckboxList {
   openChangeWordModal: (word: string, replacmentWord: string, key: string) => void
 }
 
-
-
 const CheckboxList: React.FC<ICheckboxList> = ({ openChangeWordModal }) => {
   const { listItems, changeChekedList } = useList()
 

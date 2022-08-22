@@ -13,18 +13,72 @@ const initialState: IInitialState = {
             word:'pod',
             replacmentWord:'sas'
         },
-        // {
-        //     key:uuidv4(),
-        //     checked:false,
-        //     word:'phonk',
-        //     replacmentWord:'fonk'
-        // },
-        // {
-        //     key:uuidv4(),
-        //     checked:false,
-        //     word:'set',
-        //     replacmentWord:'sit'
-        // }
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'phonk',
+            replacmentWord:'fonk'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'set',
+            replacmentWord:'sit'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'pod',
+            replacmentWord:'sas'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'phonk',
+            replacmentWord:'fonk'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'set',
+            replacmentWord:'sit'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'pod',
+            replacmentWord:'sas'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'phonk',
+            replacmentWord:'fonk'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'set',
+            replacmentWord:'sit'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'pod',
+            replacmentWord:'sas'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'phonk',
+            replacmentWord:'fonk'
+        },
+        {
+            key:uuidv4(),
+            checked:false,
+            word:'set',
+            replacmentWord:'sit'
+        }   
     ] 
 }
 
