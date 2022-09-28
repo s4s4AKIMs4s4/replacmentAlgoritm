@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react"
 import { IListItem } from "../models"
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
+import shortid from 'shortid';
+
 import { useAppDispatch, useAppSelector } from "./redux";
 import { listSlice } from "../store/reducers/listSlice";
 import { AuthSlice } from "../store/reducers/authSlice";
@@ -39,7 +41,7 @@ export default function useList() {
     const addNewListItem = (word: string, replacmentWord: string) => {
         const newObj: IListItem = {
             checked: false,
-            key: uuidv4(),
+            key: shortid.generate(),
             replacmentWord: replacmentWord,
             word: word
         }

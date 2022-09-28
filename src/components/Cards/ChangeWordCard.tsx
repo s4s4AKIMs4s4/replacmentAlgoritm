@@ -10,35 +10,42 @@ import CloseIcon from '@mui/icons-material/Close';
 import { IChangeWord } from '../../models';
 import useList from '../../hooks/UseList';
 import useCardchangeWords from '../../hooks/useCardchangeWords';
+import useInputHandler from '../../hooks/useInputHandler';
 const ariaLabel = { 'aria-label': 'description' };
 
-const  ChangeWordCard = React.forwardRef<any,IChangeWord>(( props, ref ) => {
-  const {addNewListItem, listItems, changeListItem} = useList()
-  const {changeReplacment, changeWord, wordState, setWordState} = useCardchangeWords()
+const ChangeWordCard = React.forwardRef<any, IChangeWord>((props, ref) => {
+  const { addNewListItem, listItems, changeListItem } = useList()
+  const { changeReplacment, changeWord, wordState, setWordState } = useCardchangeWords()
+  const { keyReplacmentWordHandle, keySourceWordHandle } = useInputHandler()
+  const replaceInputRef = React.useRef<HTMLDivElement>({} as HTMLDivElement)
 
-  const changeWordHandler = (e:React.MouseEvent<HTMLButtonElement>) => {    
-    const word =  wordState.word || props.word
+
+  const sendChangeWord = () => {
+    const word = wordState.word || props.word
     const replacmentWord = wordState.replacmentWord || props.replacmentWord
     changeListItem(props.wordKey, word, replacmentWord)
     props.handleClose()
+  }
+  const changeWordHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    sendChangeWord()
   }
 
   return (
     <Card sx={style}>
       <CardContent>
-          <div className={'ModalHeader'}>
-            
-            <Typography variant="h5" component="div">
-                Change Word
-            </Typography>
+        <div className={'ModalHeader'}>
 
-            <div  className = {'ModalHeader__closeButton'}>
-              <CloseIcon onClick = {props.handleClose}/>
-            </div>
+          <Typography variant="h5" component="div">
+            Change Word
+          </Typography>
 
+          <div className={'ModalHeader__closeButton'}>
+            <CloseIcon onClick={props.handleClose} />
           </div>
 
-        <div  className={'modalForm'}>
+        </div>
+
+        <div onKeyDown={ (e) => {keySourceWordHandle(e,replaceInputRef.current.querySelector('input'))} } className={'modalForm'}>
           <div>
             <Typography variant="body2">
               The word you want to replace
@@ -46,20 +53,20 @@ const  ChangeWordCard = React.forwardRef<any,IChangeWord>(( props, ref ) => {
           </div>
 
           <div>
-            <Input onChange={changeWord} defaultValue={props.word} inputProps={ariaLabel} />
+            <Input autoFocus = {true}  onChange={changeWord} defaultValue={props.word} inputProps={ariaLabel} />
           </div>
+        </div>
+
+        <div onKeyDown={(e) => (keyReplacmentWordHandle(e, sendChangeWord))} className={'modalForm'}>
+          <div>
+            <Typography variant="body2">
+              Replacement word
+            </Typography>
           </div>
 
-          <div  className={'modalForm'}>
-            <div>
-              <Typography variant="body2">
-                Replacement word
-              </Typography>
-            </div>
-            
-            <div>
-              <Input  onChange={changeReplacment} defaultValue={props.replacmentWord} inputProps={ariaLabel} />
-            </div>
+          <div>
+            <Input ref={replaceInputRef} onChange={changeReplacment} defaultValue={props.replacmentWord} inputProps={ariaLabel} />
+          </div>
         </div>
 
       </CardContent>
