@@ -60,6 +60,7 @@ const CheckboxList: React.FC<ICheckboxList> = ({ openChangeWordModal }) => {
                 </ListItemIcon>
 
                 <ListItemText
+                  style={{overflow: 'hidden',whiteSpace:'normal',textOverflow: 'ellipsis'}}
                   id={labelId}
                   primary={`${listItem.word} ➜ ${listItem.replacmentWord}`} />
               </ListItemButton>

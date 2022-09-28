@@ -10,22 +10,29 @@ import CloseIcon from '@mui/icons-material/Close';
 import { IWordCard } from '../../models';
 import useList from '../../hooks/UseList';
 import useCardchangeWords from '../../hooks/useCardchangeWords';
+import useInputHandler from '../../hooks/useInputHandler';
 
 const ariaLabel = { 'aria-label': 'description' };
 
 const CreateWordCard = React.forwardRef<any, IWordCard>(({ handleClose }, ref) => {
   const { addNewListItem, listItems, changeChekedList } = useList()
   const { changeReplacment, changeWord, wordState } = useCardchangeWords()
+  const {keyReplacmentWordHandle, keySourceWordHandle} = useInputHandler()
+  const replaceInputRef = React.useRef<HTMLDivElement>({} as HTMLDivElement )
 
-  const createWord = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const sendWordUserChoise = () => {
     addNewListItem(wordState.word, wordState.replacmentWord)
     handleClose()
+  }
+
+  const createWord = (e: React.MouseEvent<HTMLButtonElement>) => {
+    sendWordUserChoise()
   }
 
   return (
     <Card sx={style}>
       <CardContent>
-        <div className={'ModalHeader'}>
+        <div  className={'ModalHeader'}>
 
           <Typography variant="h5" component="div">
             Create word
@@ -37,7 +44,7 @@ const CreateWordCard = React.forwardRef<any, IWordCard>(({ handleClose }, ref) =
 
         </div>
 
-        <div className={'modalForm'}>
+        <div onKeyDown={ (e) => {keySourceWordHandle(e,replaceInputRef.current.querySelector('input'))} } className={'modalForm'}>
           <div>
             <Typography variant="body2">
               the word you want to replace
@@ -45,11 +52,11 @@ const CreateWordCard = React.forwardRef<any, IWordCard>(({ handleClose }, ref) =
           </div>
 
           <div>
-            <Input onChange={changeWord} defaultValue={''} inputProps={ariaLabel} />
+            <Input autoFocus = {true} onChange={changeWord} defaultValue={''} inputProps={ariaLabel} />
           </div>
         </div>
 
-        <div className={'modalForm'}>
+        <div onKeyDown={(e) => (keyReplacmentWordHandle(e, sendWordUserChoise))} className={'modalForm'}>
           <div>
             <Typography variant="body2">
               replacement word
@@ -57,7 +64,7 @@ const CreateWordCard = React.forwardRef<any, IWordCard>(({ handleClose }, ref) =
           </div>
 
           <div>
-            <Input onChange={changeReplacment} defaultValue={''} inputProps={ariaLabel} />
+            <Input  ref = {replaceInputRef} onChange={changeReplacment} defaultValue={''} inputProps={ariaLabel} />
           </div>
         </div>
 

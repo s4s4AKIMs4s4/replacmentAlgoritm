@@ -10,7 +10,7 @@ function Layout() {
   const { setAuth } = AuthSlice.actions
   const { setListItems } = listSlice.actions
   const dispatch = useAppDispatch()
-
+  
   useLayoutEffect(() => {
     //@ts-ignore
     chrome.storage.sync.get(['replaceState'], function(result) {

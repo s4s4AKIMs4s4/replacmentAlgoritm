@@ -18887,16 +18887,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material_Card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/Card */ "./node_modules/@mui/material/Card/Card.js");
-/* harmony import */ var _mui_material_CardActions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/CardActions */ "./node_modules/@mui/material/CardActions/CardActions.js");
-/* harmony import */ var _mui_material_CardContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/CardContent */ "./node_modules/@mui/material/CardContent/CardContent.js");
-/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
-/* harmony import */ var _mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/Typography */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material_Card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/Card */ "./node_modules/@mui/material/Card/Card.js");
+/* harmony import */ var _mui_material_CardActions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/CardActions */ "./node_modules/@mui/material/CardActions/CardActions.js");
+/* harmony import */ var _mui_material_CardContent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/CardContent */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/Typography */ "./node_modules/@mui/material/Typography/Typography.js");
 /* harmony import */ var _styles_card_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles/card.css */ "./src/styles/card.css");
-/* harmony import */ var _mui_material_Input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/Input */ "./node_modules/@mui/material/Input/Input.js");
-/* harmony import */ var _mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/Close */ "./node_modules/@mui/icons-material/Close.js");
+/* harmony import */ var _mui_material_Input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/Input */ "./node_modules/@mui/material/Input/Input.js");
+/* harmony import */ var _mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/icons-material/Close */ "./node_modules/@mui/icons-material/Close.js");
 /* harmony import */ var _hooks_UseList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/UseList */ "./src/hooks/UseList.tsx");
 /* harmony import */ var _hooks_useCardchangeWords__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useCardchangeWords */ "./src/hooks/useCardchangeWords.ts");
+/* harmony import */ var _hooks_useInputHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../hooks/useInputHandler */ "./src/hooks/useInputHandler.ts");
+
 
 
 
@@ -18923,41 +18925,59 @@ var ChangeWordCard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(
       wordState = _useCardchangeWords.wordState,
       setWordState = _useCardchangeWords.setWordState;
 
-  var changeWordHandler = function changeWordHandler(e) {
+  var _useInputHandler = (0,_hooks_useInputHandler__WEBPACK_IMPORTED_MODULE_4__["default"])(),
+      keyReplacmentWordHandle = _useInputHandler.keyReplacmentWordHandle,
+      keySourceWordHandle = _useInputHandler.keySourceWordHandle;
+
+  var replaceInputRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef({});
+
+  var sendChangeWord = function sendChangeWord() {
     var word = wordState.word || props.word;
     var replacmentWord = wordState.replacmentWord || props.replacmentWord;
     changeListItem(props.wordKey, word, replacmentWord);
     props.handleClose();
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Card__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  var changeWordHandler = function changeWordHandler(e) {
+    sendChangeWord();
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Card__WEBPACK_IMPORTED_MODULE_5__["default"], {
     sx: style
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardContent__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: 'ModalHeader'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "h5",
     component: "div"
   }, "Change Word"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: 'ModalHeader__closeButton'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_8__["default"], {
     onClick: props.handleClose
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onKeyDown: function onKeyDown(e) {
+      keySourceWordHandle(e, replaceInputRef.current.querySelector('input'));
+    },
     className: 'modalForm'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body2"
-  }, "The word you want to replace")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, "The word you want to replace")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    autoFocus: true,
     onChange: changeWord,
     defaultValue: props.word,
     inputProps: ariaLabel
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onKeyDown: function onKeyDown(e) {
+      return keyReplacmentWordHandle(e, sendChangeWord);
+    },
     className: 'modalForm'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body2"
-  }, "Replacement word")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, "Replacement word")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    ref: replaceInputRef,
     onChange: changeReplacment,
     defaultValue: props.replacmentWord,
     inputProps: ariaLabel
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardActions__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardActions__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
     onClick: changeWordHandler,
     size: "small"
   }, "Change")));
@@ -18987,16 +19007,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material_Card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/Card */ "./node_modules/@mui/material/Card/Card.js");
-/* harmony import */ var _mui_material_CardActions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/CardActions */ "./node_modules/@mui/material/CardActions/CardActions.js");
-/* harmony import */ var _mui_material_CardContent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/CardContent */ "./node_modules/@mui/material/CardContent/CardContent.js");
-/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
-/* harmony import */ var _mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/Typography */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material_Card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/Card */ "./node_modules/@mui/material/Card/Card.js");
+/* harmony import */ var _mui_material_CardActions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/CardActions */ "./node_modules/@mui/material/CardActions/CardActions.js");
+/* harmony import */ var _mui_material_CardContent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/CardContent */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/Typography */ "./node_modules/@mui/material/Typography/Typography.js");
 /* harmony import */ var _styles_card_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles/card.css */ "./src/styles/card.css");
-/* harmony import */ var _mui_material_Input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/Input */ "./node_modules/@mui/material/Input/Input.js");
-/* harmony import */ var _mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/Close */ "./node_modules/@mui/icons-material/Close.js");
+/* harmony import */ var _mui_material_Input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/Input */ "./node_modules/@mui/material/Input/Input.js");
+/* harmony import */ var _mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/icons-material/Close */ "./node_modules/@mui/icons-material/Close.js");
 /* harmony import */ var _hooks_UseList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/UseList */ "./src/hooks/UseList.tsx");
 /* harmony import */ var _hooks_useCardchangeWords__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useCardchangeWords */ "./src/hooks/useCardchangeWords.ts");
+/* harmony import */ var _hooks_useInputHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../hooks/useInputHandler */ "./src/hooks/useInputHandler.ts");
+
 
 
 
@@ -19024,39 +19046,57 @@ var CreateWordCard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(
       changeWord = _useCardchangeWords.changeWord,
       wordState = _useCardchangeWords.wordState;
 
-  var createWord = function createWord(e) {
+  var _useInputHandler = (0,_hooks_useInputHandler__WEBPACK_IMPORTED_MODULE_4__["default"])(),
+      keyReplacmentWordHandle = _useInputHandler.keyReplacmentWordHandle,
+      keySourceWordHandle = _useInputHandler.keySourceWordHandle;
+
+  var replaceInputRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef({});
+
+  var sendWordUserChoise = function sendWordUserChoise() {
     addNewListItem(wordState.word, wordState.replacmentWord);
     handleClose();
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Card__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  var createWord = function createWord(e) {
+    sendWordUserChoise();
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Card__WEBPACK_IMPORTED_MODULE_5__["default"], {
     sx: style
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardContent__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: 'ModalHeader'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "h5",
     component: "div"
   }, "Create word"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: 'ModalHeader__closeButton'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Close__WEBPACK_IMPORTED_MODULE_8__["default"], {
     onClick: handleClose
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onKeyDown: function onKeyDown(e) {
+      keySourceWordHandle(e, replaceInputRef.current.querySelector('input'));
+    },
     className: 'modalForm'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body2"
-  }, "the word you want to replace")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, "the word you want to replace")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    autoFocus: true,
     onChange: changeWord,
     defaultValue: '',
     inputProps: ariaLabel
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onKeyDown: function onKeyDown(e) {
+      return keyReplacmentWordHandle(e, sendWordUserChoise);
+    },
     className: 'modalForm'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body2"
-  }, "replacement word")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, "replacement word")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Input__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    ref: replaceInputRef,
     onChange: changeReplacment,
     defaultValue: '',
     inputProps: ariaLabel
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardActions__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CardActions__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
     onClick: createWord,
     size: "small"
   }, "Create")));
@@ -19159,6 +19199,11 @@ var CheckboxList = function CheckboxList(_ref) {
         'aria-labelledby': labelId
       }
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      style: {
+        overflow: 'hidden',
+        whiteSpace: 'normal',
+        textOverflow: 'ellipsis'
+      },
       id: labelId,
       primary: "".concat(listItem.word, " \u279C ").concat(listItem.replacmentWord)
     })));
@@ -19263,10 +19308,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
-/* harmony import */ var _redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./redux */ "./src/hooks/redux.ts");
-/* harmony import */ var _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/reducers/listSlice */ "./src/store/reducers/listSlice.ts");
-/* harmony import */ var _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/reducers/authSlice */ "./src/store/reducers/authSlice.ts");
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! shortid */ "./node_modules/shortid/index.js");
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./redux */ "./src/hooks/redux.ts");
+/* harmony import */ var _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/reducers/listSlice */ "./src/store/reducers/listSlice.ts");
+/* harmony import */ var _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/reducers/authSlice */ "./src/store/reducers/authSlice.ts");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -19274,18 +19320,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+// import { v4 as uuidv4 } from 'uuid';
 
 
 
 
 function useList() {
-  var listItems = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppSelector)(function (state) {
+  var listItems = (0,_redux__WEBPACK_IMPORTED_MODULE_2__.useAppSelector)(function (state) {
     return state.userReducer.list;
   });
-  var setListItems = _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_2__.listSlice.actions.setListItems;
-  var dispatch = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppDispatch)();
-  var setAuth = _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_3__.AuthSlice.actions.setAuth;
-  var isAuth = (0,_redux__WEBPACK_IMPORTED_MODULE_1__.useAppSelector)(function (state) {
+  var setListItems = _store_reducers_listSlice__WEBPACK_IMPORTED_MODULE_3__.listSlice.actions.setListItems;
+  var dispatch = (0,_redux__WEBPACK_IMPORTED_MODULE_2__.useAppDispatch)();
+  var setAuth = _store_reducers_authSlice__WEBPACK_IMPORTED_MODULE_4__.AuthSlice.actions.setAuth;
+  var isAuth = (0,_redux__WEBPACK_IMPORTED_MODULE_2__.useAppSelector)(function (state) {
     return state.authReducer.isAuth;
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -19313,7 +19360,7 @@ function useList() {
   var addNewListItem = function addNewListItem(word, replacmentWord) {
     var newObj = {
       checked: false,
-      key: (0,uuid__WEBPACK_IMPORTED_MODULE_4__["default"])(),
+      key: shortid__WEBPACK_IMPORTED_MODULE_1___default().generate(),
       replacmentWord: replacmentWord,
       word: word
     };
@@ -19436,6 +19483,38 @@ function useCardchangeWords() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useCardchangeWords);
+
+/***/ }),
+
+/***/ "./src/hooks/useInputHandler.ts":
+/*!**************************************!*\
+  !*** ./src/hooks/useInputHandler.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useInputHandler)
+/* harmony export */ });
+function useInputHandler() {
+  var keySourceWordHandle = function keySourceWordHandle(e, inputNode) {
+    if (e.code === 'Enter') {
+      inputNode.focus();
+    }
+  };
+
+  var keyReplacmentWordHandle = function keyReplacmentWordHandle(e, callback) {
+    if (e.code === 'Enter') {
+      callback();
+    }
+  };
+
+  return {
+    keySourceWordHandle: keySourceWordHandle,
+    keyReplacmentWordHandle: keyReplacmentWordHandle
+  };
+}
 
 /***/ }),
 
@@ -19747,19 +19826,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var initialState = {
   list: [// {
-    //     key:uuidv4(),
+    //     key:shortid.generate(),
     //     checked:false,
     //     word:'pod',
     //     replacmentWord:'sas'
     // },
     // {
-    //     key:uuidv4(),
+    //     key:shortid.generate(),
     //     checked:false,
-    //     word:'phonk',
+    //     word:'phonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonk',
     //     replacmentWord:'fonk'
     // },
     // {
-    //     key:uuidv4(),
+    //     key:shortid.generate(),
     //     checked:false,
     //     word:'set',
     //     replacmentWord:'sit'
@@ -19771,7 +19850,6 @@ var listSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   initialState: initialState,
   reducers: {
     setListItems: function setListItems(state, action) {
-      // alert('set')
       //@ts-ignore
       chrome.runtime.sendMessage({
         replaceState: action.payload
@@ -19850,7 +19928,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 0px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 99;\r\n    background-color: white;\r\n    height: 55px;\r\n}\r\n.header__card{ \r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    min-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;IACtB,gBAAgB;IAChB,QAAQ;IACR,gBAAgB;IAChB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,uBAAuB;IACvB,YAAY;AAChB;AACA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB","sourcesContent":[".header{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 0px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 99;\r\n    background-color: white;\r\n    height: 55px;\r\n}\r\n.header__card{ \r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    min-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 0px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 99;\r\n    background-color: white;\r\n    height: 55px;\r\n}\r\n.header__card{ \r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    min-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.header__delete-button{\r\n    cursor: pointer;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/App.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;IACtB,gBAAgB;IAChB,QAAQ;IACR,gBAAgB;IAChB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,uBAAuB;IACvB,YAAY;AAChB;AACA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,iBAAiB;IACjB,gBAAgB;AACpB;AACA;IACI,aAAa;IACb,gBAAgB;IAChB,uBAAuB;IACvB,mBAAmB;AACvB;AACA;IACI,eAAe;AACnB","sourcesContent":[".header{\r\n    padding: 0 16px 0 16px;\r\n    max-width: 327px;\r\n    top: 0px;\r\n    position: sticky;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    z-index: 99;\r\n    background-color: white;\r\n    height: 55px;\r\n}\r\n.header__card{ \r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    min-width: 327px;\r\n}\r\n.content{\r\n    display: flex;\r\n    flex-direction: column;\r\n    row-gap: 20px;\r\n    min-height: 400px;\r\n    min-width: 360px;\r\n}\r\n.notAuthPage__header{\r\n    display: flex;\r\n    max-width: 360px;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.header__delete-button{\r\n    cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19877,7 +19955,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/card.css"],"names":[],"mappings":"AAAA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,gBAAgB;AACpB;;;AAGA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB","sourcesContent":[".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/card.css"],"names":[],"mappings":"AAAA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,gBAAgB;AACpB;;;AAGA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB","sourcesContent":[".modalForm{\r\n    margin-top: 20px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    column-gap: 10px;\r\n}\r\n\r\n\r\n.modalForm div:nth-of-type(1){\r\n    flex-grow: 1;\r\n}\r\n\r\n.modalForm div:nth-of-type(2){\r\n    flex-grow: 3;\r\n}\r\n\r\n.ModalHeader{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.ModalHeader__closeButton{\r\n    display: flex;\r\n    justify-content:end;\r\n    margin-top: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.ModalHeader div{\r\n    flex-grow: 1;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -60211,6 +60289,453 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/shortid/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/shortid/index.js ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+module.exports = __webpack_require__(/*! ./lib/index */ "./node_modules/shortid/lib/index.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/alphabet.js":
+/*!**********************************************!*\
+  !*** ./node_modules/shortid/lib/alphabet.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var randomFromSeed = __webpack_require__(/*! ./random/random-from-seed */ "./node_modules/shortid/lib/random/random-from-seed.js");
+
+var ORIGINAL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+var alphabet;
+var previousSeed;
+
+var shuffled;
+
+function reset() {
+    shuffled = false;
+}
+
+function setCharacters(_alphabet_) {
+    if (!_alphabet_) {
+        if (alphabet !== ORIGINAL) {
+            alphabet = ORIGINAL;
+            reset();
+        }
+        return;
+    }
+
+    if (_alphabet_ === alphabet) {
+        return;
+    }
+
+    if (_alphabet_.length !== ORIGINAL.length) {
+        throw new Error('Custom alphabet for shortid must be ' + ORIGINAL.length + ' unique characters. You submitted ' + _alphabet_.length + ' characters: ' + _alphabet_);
+    }
+
+    var unique = _alphabet_.split('').filter(function(item, ind, arr){
+       return ind !== arr.lastIndexOf(item);
+    });
+
+    if (unique.length) {
+        throw new Error('Custom alphabet for shortid must be ' + ORIGINAL.length + ' unique characters. These characters were not unique: ' + unique.join(', '));
+    }
+
+    alphabet = _alphabet_;
+    reset();
+}
+
+function characters(_alphabet_) {
+    setCharacters(_alphabet_);
+    return alphabet;
+}
+
+function setSeed(seed) {
+    randomFromSeed.seed(seed);
+    if (previousSeed !== seed) {
+        reset();
+        previousSeed = seed;
+    }
+}
+
+function shuffle() {
+    if (!alphabet) {
+        setCharacters(ORIGINAL);
+    }
+
+    var sourceArray = alphabet.split('');
+    var targetArray = [];
+    var r = randomFromSeed.nextValue();
+    var characterIndex;
+
+    while (sourceArray.length > 0) {
+        r = randomFromSeed.nextValue();
+        characterIndex = Math.floor(r * sourceArray.length);
+        targetArray.push(sourceArray.splice(characterIndex, 1)[0]);
+    }
+    return targetArray.join('');
+}
+
+function getShuffled() {
+    if (shuffled) {
+        return shuffled;
+    }
+    shuffled = shuffle();
+    return shuffled;
+}
+
+/**
+ * lookup shuffled letter
+ * @param index
+ * @returns {string}
+ */
+function lookup(index) {
+    var alphabetShuffled = getShuffled();
+    return alphabetShuffled[index];
+}
+
+function get () {
+  return alphabet || ORIGINAL;
+}
+
+module.exports = {
+    get: get,
+    characters: characters,
+    seed: setSeed,
+    lookup: lookup,
+    shuffled: getShuffled
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/build.js":
+/*!*******************************************!*\
+  !*** ./node_modules/shortid/lib/build.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var generate = __webpack_require__(/*! ./generate */ "./node_modules/shortid/lib/generate.js");
+var alphabet = __webpack_require__(/*! ./alphabet */ "./node_modules/shortid/lib/alphabet.js");
+
+// Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
+// This number should be updated every year or so to keep the generated id short.
+// To regenerate `new Date() - 0` and bump the version. Always bump the version!
+var REDUCE_TIME = 1567752802062;
+
+// don't change unless we change the algos or REDUCE_TIME
+// must be an integer and less than 16
+var version = 7;
+
+// Counter is used when shortid is called multiple times in one second.
+var counter;
+
+// Remember the last time shortid was called in case counter is needed.
+var previousSeconds;
+
+/**
+ * Generate unique id
+ * Returns string id
+ */
+function build(clusterWorkerId) {
+    var str = '';
+
+    var seconds = Math.floor((Date.now() - REDUCE_TIME) * 0.001);
+
+    if (seconds === previousSeconds) {
+        counter++;
+    } else {
+        counter = 0;
+        previousSeconds = seconds;
+    }
+
+    str = str + generate(version);
+    str = str + generate(clusterWorkerId);
+    if (counter > 0) {
+        str = str + generate(counter);
+    }
+    str = str + generate(seconds);
+    return str;
+}
+
+module.exports = build;
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/generate.js":
+/*!**********************************************!*\
+  !*** ./node_modules/shortid/lib/generate.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var alphabet = __webpack_require__(/*! ./alphabet */ "./node_modules/shortid/lib/alphabet.js");
+var random = __webpack_require__(/*! ./random/random-byte */ "./node_modules/shortid/lib/random/random-byte-browser.js");
+var format = __webpack_require__(/*! nanoid/format */ "./node_modules/shortid/node_modules/nanoid/format.browser.js");
+
+function generate(number) {
+    var loopCounter = 0;
+    var done;
+
+    var str = '';
+
+    while (!done) {
+        str = str + format(random, alphabet.get(), 1);
+        done = number < (Math.pow(16, loopCounter + 1 ) );
+        loopCounter++;
+    }
+    return str;
+}
+
+module.exports = generate;
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/shortid/lib/index.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var alphabet = __webpack_require__(/*! ./alphabet */ "./node_modules/shortid/lib/alphabet.js");
+var build = __webpack_require__(/*! ./build */ "./node_modules/shortid/lib/build.js");
+var isValid = __webpack_require__(/*! ./is-valid */ "./node_modules/shortid/lib/is-valid.js");
+
+// if you are using cluster or multiple servers use this to make each instance
+// has a unique value for worker
+// Note: I don't know if this is automatically set when using third
+// party cluster solutions such as pm2.
+var clusterWorkerId = __webpack_require__(/*! ./util/cluster-worker-id */ "./node_modules/shortid/lib/util/cluster-worker-id-browser.js") || 0;
+
+/**
+ * Set the seed.
+ * Highly recommended if you don't want people to try to figure out your id schema.
+ * exposed as shortid.seed(int)
+ * @param seed Integer value to seed the random alphabet.  ALWAYS USE THE SAME SEED or you might get overlaps.
+ */
+function seed(seedValue) {
+    alphabet.seed(seedValue);
+    return module.exports;
+}
+
+/**
+ * Set the cluster worker or machine id
+ * exposed as shortid.worker(int)
+ * @param workerId worker must be positive integer.  Number less than 16 is recommended.
+ * returns shortid module so it can be chained.
+ */
+function worker(workerId) {
+    clusterWorkerId = workerId;
+    return module.exports;
+}
+
+/**
+ *
+ * sets new characters to use in the alphabet
+ * returns the shuffled alphabet
+ */
+function characters(newCharacters) {
+    if (newCharacters !== undefined) {
+        alphabet.characters(newCharacters);
+    }
+
+    return alphabet.shuffled();
+}
+
+/**
+ * Generate unique id
+ * Returns string id
+ */
+function generate() {
+  return build(clusterWorkerId);
+}
+
+// Export all other functions as properties of the generate function
+module.exports = generate;
+module.exports.generate = generate;
+module.exports.seed = seed;
+module.exports.worker = worker;
+module.exports.characters = characters;
+module.exports.isValid = isValid;
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/is-valid.js":
+/*!**********************************************!*\
+  !*** ./node_modules/shortid/lib/is-valid.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var alphabet = __webpack_require__(/*! ./alphabet */ "./node_modules/shortid/lib/alphabet.js");
+
+function isShortId(id) {
+    if (!id || typeof id !== 'string' || id.length < 6 ) {
+        return false;
+    }
+
+    var nonAlphabetic = new RegExp('[^' +
+      alphabet.get().replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&') +
+    ']');
+    return !nonAlphabetic.test(id);
+}
+
+module.exports = isShortId;
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/random/random-byte-browser.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/shortid/lib/random/random-byte-browser.js ***!
+  \****************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+var crypto = typeof window === 'object' && (window.crypto || window.msCrypto); // IE 11 uses window.msCrypto
+
+var randomByte;
+
+if (!crypto || !crypto.getRandomValues) {
+    randomByte = function(size) {
+        var bytes = [];
+        for (var i = 0; i < size; i++) {
+            bytes.push(Math.floor(Math.random() * 256));
+        }
+        return bytes;
+    };
+} else {
+    randomByte = function(size) {
+        return crypto.getRandomValues(new Uint8Array(size));
+    };
+}
+
+module.exports = randomByte;
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/random/random-from-seed.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/shortid/lib/random/random-from-seed.js ***!
+  \*************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+// Found this seed-based random generator somewhere
+// Based on The Central Randomizer 1.3 (C) 1997 by Paul Houle (houle@msc.cornell.edu)
+
+var seed = 1;
+
+/**
+ * return a random number based on a seed
+ * @param seed
+ * @returns {number}
+ */
+function getNextValue() {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed/(233280.0);
+}
+
+function setSeed(_seed_) {
+    seed = _seed_;
+}
+
+module.exports = {
+    nextValue: getNextValue,
+    seed: setSeed
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/lib/util/cluster-worker-id-browser.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/shortid/lib/util/cluster-worker-id-browser.js ***!
+  \********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = 0;
+
+
+/***/ }),
+
+/***/ "./node_modules/shortid/node_modules/nanoid/format.browser.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/shortid/node_modules/nanoid/format.browser.js ***!
+  \********************************************************************/
+/***/ ((module) => {
+
+// This file replaces `format.js` in bundlers like webpack or Rollup,
+// according to `browser` config in `package.json`.
+
+module.exports = function (random, alphabet, size) {
+  // We can’t use bytes bigger than the alphabet. To make bytes values closer
+  // to the alphabet, we apply bitmask on them. We look for the closest
+  // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
+  // 30 symbols in the alphabet, we will take 31 (00011111).
+  // We do not use faster Math.clz32, because it is not available in browsers.
+  var mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
+  // Bitmask is not a perfect solution (in our example it will pass 31 bytes,
+  // which is bigger than the alphabet). As a result, we will need more bytes,
+  // than ID size, because we will refuse bytes bigger than the alphabet.
+
+  // Every hardware random generator call is costly,
+  // because we need to wait for entropy collection. This is why often it will
+  // be faster to ask for few extra bytes in advance, to avoid additional calls.
+
+  // Here we calculate how many random bytes should we call in advance.
+  // It depends on ID length, mask / alphabet size and magic number 1.6
+  // (which was selected according benchmarks).
+
+  // -~f => Math.ceil(f) if n is float number
+  // -~i => i + 1 if n is integer number
+  var step = -~(1.6 * mask * size / alphabet.length)
+  var id = ''
+
+  while (true) {
+    var bytes = random(step)
+    // Compact alternative for `for (var i = 0; i < step; i++)`
+    var i = step
+    while (i--) {
+      // If random byte is bigger than alphabet even after bitmask,
+      // we refuse it by `|| ''`.
+      id += alphabet[bytes[i] & mask] || ''
+      // More compact than `id.length + 1 === size`
+      if (id.length === +size) return id
+    }
+  }
+}
+
+
+/***/ }),
+
 /***/ "./src/styles/App.css":
 /*!****************************!*\
   !*** ./src/styles/App.css ***!
@@ -61204,161 +61729,6 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ../cjs/use-sync-external-store-shim/with-selector.development.js */ "./node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js");
 }
 
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/regex.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/regex.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i);
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/rng.js":
-/*!***************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/rng.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ rng)
-/* harmony export */ });
-// Unique ID creation requires a high quality random # generator. In the browser we therefore
-// require the crypto API and do not support built-in fallback to lower quality random number
-// generators (like Math.random()).
-var getRandomValues;
-var rnds8 = new Uint8Array(16);
-function rng() {
-  // lazy load so that environments that need to polyfill have a chance to do so
-  if (!getRandomValues) {
-    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation. Also,
-    // find the complete implementation of crypto (msCrypto) on IE11.
-    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== 'undefined' && typeof msCrypto.getRandomValues === 'function' && msCrypto.getRandomValues.bind(msCrypto);
-
-    if (!getRandomValues) {
-      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
-    }
-  }
-
-  return getRandomValues(rnds8);
-}
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/stringify.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/stringify.js ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validate.js */ "./node_modules/uuid/dist/esm-browser/validate.js");
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-
-var byteToHex = [];
-
-for (var i = 0; i < 256; ++i) {
-  byteToHex.push((i + 0x100).toString(16).substr(1));
-}
-
-function stringify(arr) {
-  var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  // Note: Be careful editing this code!  It's been tuned for performance
-  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
-  var uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
-  // of the following:
-  // - One or more input array values don't map to a hex octet (leading to
-  // "undefined" in the uuid)
-  // - Invalid input values for the RFC `version` or `variant` fields
-
-  if (!(0,_validate_js__WEBPACK_IMPORTED_MODULE_0__["default"])(uuid)) {
-    throw TypeError('Stringified UUID is invalid');
-  }
-
-  return uuid;
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (stringify);
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/v4.js":
-/*!**************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/v4.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rng.js */ "./node_modules/uuid/dist/esm-browser/rng.js");
-/* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stringify.js */ "./node_modules/uuid/dist/esm-browser/stringify.js");
-
-
-
-function v4(options, buf, offset) {
-  options = options || {};
-  var rnds = options.random || (options.rng || _rng_js__WEBPACK_IMPORTED_MODULE_0__["default"])(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-
-  rnds[6] = rnds[6] & 0x0f | 0x40;
-  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
-
-  if (buf) {
-    offset = offset || 0;
-
-    for (var i = 0; i < 16; ++i) {
-      buf[offset + i] = rnds[i];
-    }
-
-    return buf;
-  }
-
-  return (0,_stringify_js__WEBPACK_IMPORTED_MODULE_1__["default"])(rnds);
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (v4);
-
-/***/ }),
-
-/***/ "./node_modules/uuid/dist/esm-browser/validate.js":
-/*!********************************************************!*\
-  !*** ./node_modules/uuid/dist/esm-browser/validate.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _regex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex.js */ "./node_modules/uuid/dist/esm-browser/regex.js");
-
-
-function validate(uuid) {
-  return typeof uuid === 'string' && _regex_js__WEBPACK_IMPORTED_MODULE_0__["default"].test(uuid);
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validate);
 
 /***/ }),
 
@@ -62709,7 +63079,7 @@ function combine (array, callback) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("c3663f49aa1b74e36ed2")
+/******/ 		__webpack_require__.h = () => ("df3951a3c44a8b313be3")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
