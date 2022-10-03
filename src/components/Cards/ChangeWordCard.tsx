@@ -13,12 +13,11 @@ import useCardchangeWords from '../../hooks/useCardchangeWords';
 import useInputHandler from '../../hooks/useInputHandler';
 const ariaLabel = { 'aria-label': 'description' };
 
-const ChangeWordCard = React.forwardRef<any, IChangeWord>((props, ref) => {
-  const { addNewListItem, listItems, changeListItem } = useList()
+const ChangeWordCard = React.forwardRef<unknown, IChangeWord>((props, ref) => {
+  const {changeListItem } = useList()
   const { changeReplacment, changeWord, wordState, setWordState } = useCardchangeWords()
   const { keyReplacmentWordHandle, keySourceWordHandle } = useInputHandler()
   const replaceInputRef = React.useRef<HTMLDivElement>({} as HTMLDivElement)
-
 
   const sendChangeWord = () => {
     const word = wordState.word || props.word

@@ -11,10 +11,9 @@ import { IWordCard } from '../../models';
 import useList from '../../hooks/UseList';
 import useCardchangeWords from '../../hooks/useCardchangeWords';
 import useInputHandler from '../../hooks/useInputHandler';
-
 const ariaLabel = { 'aria-label': 'description' };
 
-const CreateWordCard = React.forwardRef<any, IWordCard>(({ handleClose }, ref) => {
+const CreateWordCard = React.forwardRef<unknown, IWordCard>(({ handleClose }, ref) => {
   const { addNewListItem, listItems, changeChekedList } = useList()
   const { changeReplacment, changeWord, wordState } = useCardchangeWords()
   const {keyReplacmentWordHandle, keySourceWordHandle} = useInputHandler()

@@ -10,10 +10,6 @@ function NotAuthPage() {
         Modal
     } = useWordsModal()
 
-    React.useEffect(() => {
-        return () => { console.log('Unmount') }
-    })
-
     return <>
         <div className='content'>
             {Modal}

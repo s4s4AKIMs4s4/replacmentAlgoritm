@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, {useLayoutEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import AuthUserPage from '../pages/AuthUserPage'
 import NotAuthPage from '../pages/NotAuthPage'

@@ -1,6 +1,6 @@
 {
-    "short_name": "BgColor Change",
-    "name": "Change background color",
+    "short_name": "WordSubstitute",
+    "name": "WordSubstitute",
     "version": "1.0.0",
     "manifest_version": 3,
     "background":{
@@ -21,6 +21,6 @@
         "default_popup":"index.html"
     },
     "icons": {
-      "48": "image48.png"
+      "48": "logoExtenstion.png"
     }
   }

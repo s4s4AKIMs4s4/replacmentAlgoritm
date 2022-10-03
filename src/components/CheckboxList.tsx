@@ -16,10 +16,6 @@ interface ICheckboxList {
 const CheckboxList: React.FC<ICheckboxList> = ({ openChangeWordModal }) => {
   const { listItems, changeChekedList } = useList()
 
-  React.useEffect(() => {
-    return () => { console.log('Unmount') }
-  }, [])
-
   const handleListClick = (key: string) => () => {
     changeChekedList(key)
   }

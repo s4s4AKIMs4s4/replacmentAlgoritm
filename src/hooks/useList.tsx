@@ -15,11 +15,9 @@ export default function useList() {
     const isAuth = useAppSelector(state => state.authReducer.isAuth)
 
     useEffect(() => {
-        if(!isAuth){
-            if(listItems.length !== 0){
+        if(!isAuth)
+            if(listItems.length !== 0)
                 dispatch(setAuth(true))
-            }
-        }
     },[listItems])
     
     const findListElementById = (key: string): undefined | IListItem => {
@@ -38,7 +36,7 @@ export default function useList() {
         )
     }, [listItems])
 
-    const addNewListItem = (word: string, replacmentWord: string) => {
+    const addNewListItem = useCallback((word: string, replacmentWord: string) => {
         const newObj: IListItem = {
             checked: false,
             key: shortid.generate(),
@@ -47,11 +45,11 @@ export default function useList() {
         }
         const newList = listItems.concat({ ...newObj })
         dispatch(setListItems(newList))
-    }
+    },[listItems])
 
-    const removeListItems = () => {
+    const removeListItems = useCallback( () => {
         dispatch(setListItems(listItems.filter((listItem) => !listItem.checked)))
-    }
+    },[listItems])
   
     const changeListItem = (key: string, word: string, replacmentWord: string) => {
         dispatch(setListItems(listItems.map((listItem) => {

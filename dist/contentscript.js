@@ -112,6 +112,5 @@ observer.observe(targetNode, config);
 chrome.runtime.onMessage.addListener(
     async function (request, sender, sendResponse) {
         updateListWords(request.state)
-        console.log(request.state)
         makeReplace()
     });

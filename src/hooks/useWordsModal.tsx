@@ -1,5 +1,5 @@
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState,useCallback } from "react";
 import React from "react";
 import CreateWordCard from "../components/Cards/CreateWordCard";
 import ChangeWordCard from "../components/Cards/ChangeWordCard";
@@ -23,18 +23,19 @@ export default function useWordsModal() {
         isOpen: false
     })
 
-    const openCreteWordModal = () => {
+    const openCreteWordModal = useCallback(() => {
         setModalState({
             currentModal: ModalEnum.CREATE,
             isOpen: true
         })
-    }
+    },[])
 
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         setModalState((prev) => {
             return { ...prev, isOpen: false }
         })
-    }
+    },[])
+
     interface IChangeObject {
         word: string,
         replacmentWord: string,
@@ -44,8 +45,7 @@ export default function useWordsModal() {
     const ChangeObject = useRef<IChangeObject>(
         {} as IChangeObject
     )
-    const openChangeWordModal = (word: string, replacmentWord: string, key: string) => {
-
+    const openChangeWordModal = useCallback((word: string, replacmentWord: string, key: string) => {
         ChangeObject.current = {
             word,
             replacmentWord,
@@ -55,7 +55,7 @@ export default function useWordsModal() {
             currentModal: ModalEnum.CHANGE,
             isOpen: true
         })
-    }
+    },[])
 
     const Modal = useMemo(() => {
         if (ModalSatate.currentModal === ModalEnum.CREATE)

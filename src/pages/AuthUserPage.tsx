@@ -15,18 +15,14 @@ function Layout() {
 
     const { removeListItems } = useList()
 
-    const removeListImtemClickHandler = () => {
-        removeListItems()
-    }
-
     return <>
         <div className='content'>
             {Modal}
             
             <div className="header">
                 <div className='header__card'>
-                    <Button className="header__create-button" variant="outlined" onClick={() => { openCreteWordModal() }}>Create</Button>
-                    <DeleteIcon className="header__delete-button" onClick={removeListImtemClickHandler} />
+                    <Button className="header__create-button" variant="outlined" onClick={() => openCreteWordModal() }>Create</Button>
+                    <DeleteIcon className="header__delete-button" onClick={() => removeListItems()} />
                 </div>
             </div>
 

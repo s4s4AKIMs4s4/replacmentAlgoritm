@@ -24,7 +24,7 @@ function sendToContenJs(tabId, changeInfo, tab){
 }
 
 chrome.runtime.onInstalled.addListener(()=>{
-    console.log('install')
+    // console.log('install')
 })
 
 chrome.tabs.onUpdated.addListener(
