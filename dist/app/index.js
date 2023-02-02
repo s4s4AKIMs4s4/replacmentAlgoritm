@@ -18915,8 +18915,6 @@ var ariaLabel = {
 };
 var ChangeWordCard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function (props, ref) {
   var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_2__["default"])(),
-      addNewListItem = _useList.addNewListItem,
-      listItems = _useList.listItems,
       changeListItem = _useList.changeListItem;
 
   var _useCardchangeWords = (0,_hooks_useCardchangeWords__WEBPACK_IMPORTED_MODULE_3__["default"])(),
@@ -19153,12 +19151,6 @@ var CheckboxList = function CheckboxList(_ref) {
       listItems = _useList.listItems,
       changeChekedList = _useList.changeChekedList;
 
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    return function () {
-      console.log('Unmount');
-    };
-  }, []);
-
   var handleListClick = function handleListClick(key) {
     return function () {
       changeChekedList(key);
@@ -19335,13 +19327,10 @@ function useList() {
   var isAuth = (0,_redux__WEBPACK_IMPORTED_MODULE_2__.useAppSelector)(function (state) {
     return state.authReducer.isAuth;
   });
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!isAuth) {
-      if (listItems.length !== 0) {
-        dispatch(setAuth(true));
-      }
-    }
-  }, [listItems]);
+
+  var setIsAuthForFirstAddedWord = function setIsAuthForFirstAddedWord(newListItems) {
+    if (!isAuth) if (newListItems.length !== 0) dispatch(setAuth(true));
+  };
 
   var findListElementById = function findListElementById(key) {
     return listItems.find(function (listItem) {
@@ -19356,8 +19345,7 @@ function useList() {
       });else return _objectSpread({}, listItem);
     })));
   }, [listItems]);
-
-  var addNewListItem = function addNewListItem(word, replacmentWord) {
+  var addNewListItem = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (word, replacmentWord) {
     var newObj = {
       checked: false,
       key: shortid__WEBPACK_IMPORTED_MODULE_1___default().generate(),
@@ -19365,14 +19353,14 @@ function useList() {
       word: word
     };
     var newList = listItems.concat(_objectSpread({}, newObj));
+    setIsAuthForFirstAddedWord(newList);
     dispatch(setListItems(newList));
-  };
-
-  var removeListItems = function removeListItems() {
+  }, [listItems]);
+  var removeListItems = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     dispatch(setListItems(listItems.filter(function (listItem) {
       return !listItem.checked;
     })));
-  };
+  }, [listItems]);
 
   var changeListItem = function changeListItem(key, word, replacmentWord) {
     dispatch(setListItems(listItems.map(function (listItem) {
@@ -19579,24 +19567,21 @@ function useWordsModal() {
       ModalSatate = _useState4[0],
       setModalState = _useState4[1];
 
-  var openCreteWordModal = function openCreteWordModal() {
+  var openCreteWordModal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     setModalState({
       currentModal: ModalEnum.CREATE,
       isOpen: true
     });
-  };
-
-  var closeModal = function closeModal() {
+  }, []);
+  var closeModal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     setModalState(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, {
         isOpen: false
       });
     });
-  };
-
+  }, []);
   var ChangeObject = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({});
-
-  var openChangeWordModal = function openChangeWordModal(word, replacmentWord, key) {
+  var openChangeWordModal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (word, replacmentWord, key) {
     ChangeObject.current = {
       word: word,
       replacmentWord: replacmentWord,
@@ -19606,8 +19591,7 @@ function useWordsModal() {
       currentModal: ModalEnum.CHANGE,
       isOpen: true
     });
-  };
-
+  }, []);
   var Modal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
     if (ModalSatate.currentModal === ModalEnum.CREATE) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_modals_createNewWorldModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
       open: ModalSatate.isOpen,
@@ -19700,10 +19684,6 @@ function Layout() {
   var _useList = (0,_hooks_UseList__WEBPACK_IMPORTED_MODULE_4__["default"])(),
       removeListItems = _useList.removeListItems;
 
-  var removeListImtemClickHandler = function removeListImtemClickHandler() {
-    removeListItems();
-  };
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "content"
   }, Modal, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -19714,11 +19694,13 @@ function Layout() {
     className: "header__create-button",
     variant: "outlined",
     onClick: function onClick() {
-      openCreteWordModal();
+      return openCreteWordModal();
     }
   }, "Create"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_6__["default"], {
     className: "header__delete-button",
-    onClick: removeListImtemClickHandler
+    onClick: function onClick() {
+      return removeListItems();
+    }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CheckboxList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     openChangeWordModal: openChangeWordModal
   }))));
@@ -19756,11 +19738,6 @@ function NotAuthPage() {
       openCreteWordModal = _useWordsModal.openCreteWordModal,
       Modal = _useWordsModal.Modal;
 
-  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-    return function () {
-      console.log('Unmount');
-    };
-  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "content"
   }, Modal, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -63079,7 +63056,7 @@ function combine (array, callback) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("df3951a3c44a8b313be3")
+/******/ 		__webpack_require__.h = () => ("d3af0b5f0786fd3d9cca")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

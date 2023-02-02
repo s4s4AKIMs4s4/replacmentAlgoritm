@@ -14,12 +14,12 @@ export default function useList() {
     const { setAuth } = AuthSlice.actions
     const isAuth = useAppSelector(state => state.authReducer.isAuth)
 
-    useEffect(() => {
+    const setIsAuthForFirstAddedWord = (newListItems: typeof listItems) => {
         if(!isAuth)
-            if(listItems.length !== 0)
+            if(newListItems.length !== 0)
                 dispatch(setAuth(true))
-    },[listItems])
-    
+    }
+
     const findListElementById = (key: string): undefined | IListItem => {
         return listItems.find((listItem) => {
             return listItem.key === key
@@ -44,6 +44,7 @@ export default function useList() {
             word: word
         }
         const newList = listItems.concat({ ...newObj })
+        setIsAuthForFirstAddedWord(newList)
         dispatch(setListItems(newList))
     },[listItems])
 
