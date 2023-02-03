@@ -20,19 +20,6 @@ module.exports = (env, {mode = 'development'}) => {
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-            // options: {
-            //   presets: [
-            //     '@babel/preset-env',
-            //     '@babel/preset-react',
-            //     '@babel/preset-typescript',
-            //   ],
-            //   plugins: [
-            //     '@babel/plugin-external-helpers',
-            //     'babel-plugin-styled-components',
-            //     '@babel/plugin-proposal-class-properties',
-            //     '@babel/plugin-proposal-object-rest-spread',
-            //   ],
-            // },
           },
         },
         {
@@ -65,7 +52,6 @@ module.exports = (env, {mode = 'development'}) => {
     ],
   };
 
-
   if (mode === 'development') {
     config.devtool = 'source-map';
     config.output = {
@@ -88,26 +74,6 @@ module.exports = (env, {mode = 'development'}) => {
       }),
       new webpack.HotModuleReplacementPlugin(),
     ];
-    // config.devServer = {
-    //   contentBase: path.resolve(__dirname, 'dist'),
-    //   publicPath: '/',
-    //   stats: {
-    //     colors: true,
-    //     hash: false,
-    //     version: false,
-    //     timings: true,
-    //     assets: true,
-    //     chunks: false,
-    //     modules: false,
-    //     reasons: false,
-    //     children: false,
-    //     source: false,
-    //     errors: true,
-    //     errorDetails: true,
-    //     warnings: false,
-    //     publicPath: false,
-    //   },
-    // };
     config.optimization = {
       mangleWasmImports: true,
       mergeDuplicateChunks: true,

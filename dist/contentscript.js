@@ -24,7 +24,7 @@ options = {
     characterData: true,
     subtree: true,
   }
-const reolacmentStrategy = (destinationWord, replacmentWord) => {
+const replacmentStrategy = (destinationWord, replacmentWord) => {
     const iterableDOOM = (Element) => {
         const children = [...Element.children]
         if(children.length === 0)
@@ -44,7 +44,7 @@ const makeReplace = () => {
     const body = document.querySelector('body')
     if(!listWords) return
     listWords.replaceState.map((wordObject) => {
-        reolacmentStrategy(wordObject.word, wordObject.replacmentWord)(body)
+        replacmentStrategy(wordObject.word, wordObject.replacmentWord)(body)
     })
 }
 
@@ -92,12 +92,12 @@ const updateListWords = (currentListWords) => {
                 listWord.replacmentWord !== findedWord.replacmentWord ||
                 listWord.word !== findedWord.word
             ){
-                reolacmentStrategy(listWord.replacmentWord, findedWord.replacmentWord)(body)
+                replacmentStrategy(listWord.replacmentWord, findedWord.replacmentWord)(body)
             }
             newListWords.push({...findedWord})
         }
         else{
-            reolacmentStrategy( listWord.replacmentWord, listWord.word )(body)
+            replacmentStrategy( listWord.replacmentWord, listWord.word )(body)
         }
     })
     if(listWords.replaceState.length < currentListWords.replaceState.length){
