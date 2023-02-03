@@ -58,11 +58,11 @@ function debounce(f, ms) {
     };
   }
 
-const debouncedMakeReplace =  debounce(makeReplace, 500)
+const debouncedMakeReplace =  debounce(makeReplace, 200)
 
 const callback = function(mutationList, observer) {
     for(mutation of mutationList){
-        if(mutation.type ==='attributes') continue
+        if(mutation.type ==='childList') continue
         debouncedMakeReplace()
     }
 
@@ -112,5 +112,4 @@ observer.observe(targetNode, config);
 chrome.runtime.onMessage.addListener(
     async function (request, sender, sendResponse) {
         updateListWords(request.state)
-        makeReplace()
     });
