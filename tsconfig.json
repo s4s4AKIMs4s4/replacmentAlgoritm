@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
       "allowSyntheticDefaultImports": true,
-      "jsx": "react",
       "module": "ES6",
       "noImplicitAny": true,
       "outDir": "./dist/",
@@ -15,6 +14,7 @@
       "strictNullChecks": false,
       "downlevelIteration": true,
       "esModuleInterop": true,
+      "jsx":"react-jsx"
     //   "allowJs": true,
     },
     "include": [

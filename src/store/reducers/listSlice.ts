@@ -1,32 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IListItem } from "../../models"
-// import { v4 as uuidv4 } from 'uuid';
-import shortid from 'shortid';
 
 interface IInitialState {
     list:IListItem[]
 }
+
 const initialState: IInitialState = {
-    list:[
-        // {
-        //     key:shortid.generate(),
-        //     checked:false,
-        //     word:'pod',
-        //     replacmentWord:'sas'
-        // },
-        // {
-        //     key:shortid.generate(),
-        //     checked:false,
-        //     word:'phonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonkphonk',
-        //     replacmentWord:'fonk'
-        // },
-        // {
-        //     key:shortid.generate(),
-        //     checked:false,
-        //     word:'set',
-        //     replacmentWord:'sit'
-        // }
-    ] 
+    list:[] 
 }
 
 export const listSlice = createSlice({

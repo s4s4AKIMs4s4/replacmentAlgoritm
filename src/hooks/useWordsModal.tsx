@@ -1,6 +1,5 @@
 
 import { useMemo, useRef, useState,useCallback } from "react";
-import React from "react";
 import CreateWordCard from "../components/Cards/CreateWordCard";
 import ChangeWordCard from "../components/Cards/ChangeWordCard";
 import CreateNewWorldModal from "../components/modals/createNewWorldModal";

@@ -4,7 +4,7 @@ import CheckboxList from '../components/CheckboxList'
 import DeleteIcon from '@mui/icons-material/Delete';
 import '../styles/App.css'
 import useWordsModal from '../hooks/useWordsModal';
-import useList from '../hooks/UseList';
+import useList from '../hooks/useList';
 
 function Layout() {
     const {

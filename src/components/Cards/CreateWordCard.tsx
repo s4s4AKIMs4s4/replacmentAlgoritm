@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,9 +7,10 @@ import '../../styles/card.css'
 import Input from '@mui/material/Input';
 import CloseIcon from '@mui/icons-material/Close';
 import { IWordCard } from '../../models';
-import useList from '../../hooks/UseList';
+import useList from '../../hooks/useList';
 import useCardchangeWords from '../../hooks/useCardchangeWords';
 import useInputHandler from '../../hooks/useInputHandler';
+import React from 'react';
 const ariaLabel = { 'aria-label': 'description' };
 
 const CreateWordCard = React.forwardRef<unknown, IWordCard>(({ handleClose }, ref) => {
